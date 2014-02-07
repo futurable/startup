@@ -24,7 +24,14 @@ AppAsset::register($this);
 
 <?php $this->beginBody() ?>
 	<div class="wrap">
-
+		<div class='disclaimer'>
+		    <p>
+		        Welcome to the Futural - a virtual learning environment 
+		        by <a href='http://futurable.fi'>Futurable</a>.
+		        <a href='mailto:futurality@futurable.fi?subject=Feedback'>Give feedback</a>.
+		    </p>
+		</div>
+	
 		<div class="container">
 			<?= Breadcrumbs::widget([
 				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
