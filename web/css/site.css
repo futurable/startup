@@ -1,8 +1,35 @@
 html,
 body {
 	height: 100%;
+	background-color: #555;
+	font-family: 'Ubuntu','Helvetica', 'sans-serif' !important;
+    margin: 0;
+    padding: 0;
 }
-
+.disclaimer {
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0 15px 0;
+	border-bottom: 1px solid #000;
+	margin-bottom: 10px;
+	color: #eee;
+	background-color: #000;
+}
+.disclaimer p {
+	margin-bottom: 0;
+}
+.disclaimer a:link, .disclaimer a:visited {
+	color: #0088CC;
+}
+.disclaimer a:hover {
+	color: #C8DA30;
+	text-decoration: none;
+}
+#logo{
+    border-bottom: 5px solid #A8CF38;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
 .wrap {
 	min-height: 100%;
 	height: auto;
@@ -11,7 +38,10 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+	border-radius: 15px;
+    padding: 0;
+    background-color: #fff;
+    margin-top: 0;
 }
 
 .footer {
