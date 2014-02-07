@@ -19,7 +19,7 @@ AppAsset::register($this);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= Html::encode($this->title) ?></title>
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/futural.css" />
+	<link rel="shortcut icon" href="css/img/favicon.ico" />
 	<?php $this->head() ?>
 </head>
 <body>
@@ -44,7 +44,6 @@ AppAsset::register($this);
 
 	<footer class="footer">
 		<div class="container">
-			<p 
 			<p class="pull-left">Futural virtual learning environment</p>
 			<p class="pull-right">Futurable Oy <?= date('Y') ?></p>
 		</div>
