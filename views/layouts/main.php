@@ -18,6 +18,8 @@ AppAsset::register($this);
 	<meta charset="<?= Yii::$app->charset ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= Html::encode($this->title) ?></title>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/futural.css" />
 	<?php $this->head() ?>
 </head>
 <body>
