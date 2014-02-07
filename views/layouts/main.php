@@ -33,14 +33,18 @@ AppAsset::register($this);
 		</div>
 	
 		<div class="container">
+			<div id="logo">
+            	<?php echo Html::img('css/img/futural-logo-startup_h128.png'); ?>
+	        </div>
 			<?= $content ?>
 		</div>
 	</div>
 
 	<footer class="footer">
 		<div class="container">
-			<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-			<p class="pull-right"><?= Yii::powered() ?></p>
+			<p 
+			<p class="pull-left">Futural virtual learning environment</p>
+			<p class="pull-right">Futurable Oy <?= date('Y') ?></p>
 		</div>
 	</footer>
 
