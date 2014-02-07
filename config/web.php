@@ -23,7 +23,7 @@ $config = [
 		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
-			'showScriptName' => false,
+			'showScriptName' => true,
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
