@@ -12,6 +12,8 @@ body {
 	padding: 10px 0 15px 0;
 	border-bottom: 1px solid #000;
 	margin-bottom: 10px;
+}
+.disclaimer, .footer{
 	color: #eee;
 	background-color: #000;
 }
@@ -46,8 +48,6 @@ body {
 
 .footer {
 	height: 60px;
-	background-color: #f5f5f5;
-	border-top: 1px solid #ddd;
 	padding-top: 20px;
 }
 
