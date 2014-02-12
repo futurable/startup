@@ -28,7 +28,7 @@ AppAsset::register($this);
 	<div class="wrap">
 		<div class='disclaimer'>
 		    <p>
-		        Welcome to the Futural - a virtual learning environment 
+		        Welcome to Futural - a virtual learning environment 
 		        by <a href='http://futurable.fi'>Futurable</a>.
 		        <a href='mailto:futurality@futurable.fi?subject=Feedback'>Give feedback</a>.
 		    </p>
@@ -44,7 +44,7 @@ AppAsset::register($this);
 
 	<footer class="footer">
 		<div class="container">
-			<p class="pull-left">Futural virtual learning environment</p>
+			<p class="pull-left">Futural business simulation environment</p>
 			<p class="pull-right">Futurable Oy <?= date('Y') ?></p>
 		</div>
 	</footer>
