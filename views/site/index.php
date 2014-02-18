@@ -1,18 +1,25 @@
 <?php
 /**
  * @var yii\web\View $this
+ * @var yii\widgets\ActiveForm $form
  */
+use kartik\widgets\ActiveForm;
+use yii\helpers\Html;
 $this->title = 'Futural startup';
 ?>
 <div class="site-index">
 
 	<div class="jumbotron">
-		<h1>Welcome to the Futural!</h1>
+		<h1><?php echo Yii::t('Company', 'Welcome')."!"; ?></h1>
 
-		<h2>Create a company</h2>
-		<p class="lead">Please provide a token key:</p>
+		<p class="lead"><?php echo Yii::t('Company', 'Please provide a token key'); ?>:</p>
 		
-		<p><a class="btn btn-lg btn-success" href="#">Validate</a></p>
+		<?php	
+			$form = ActiveForm::begin(['id' => 'startup-form']);
+			echo $form->field($tokenKey, 'token_key');
+			echo Html::submitButton(Yii::t('Company', 'Validate'), ['class' => 'btn btn-success']);
+			ActiveForm::end();
+		?>
 	</div>
 	
 </div>
