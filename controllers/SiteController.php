@@ -31,6 +31,14 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		$tokenKey = new TokenKey();
-		return $this->render('index', array($tokenKey));
+		$tokenKey->load($_POST);
+
+		if($tokenKey->token_key) {
+			$company = new Company();
+			return $this->render('create', array('tokenKey' => $tokenKey, 'company' => $company));
+		} else {
+			return $this->render('index', array('tokenKey' => $tokenKey));
+		}
 	}
+	
 }
