@@ -54,16 +54,16 @@ class Company extends \yii\db\ActiveRecord
 	public function attributeLabels()
 	{
 		return [
-			'id' => 'ID',
-			'name' => 'Name',
-			'tag' => 'Tag',
-			'business_id' => 'Business ID',
-			'email' => 'Email',
-			'employees' => 'Employees',
-			'active' => 'Active',
-			'create_time' => 'Create Time',
-			'token_key_id' => 'Token Key ID',
-			'industry_id' => 'Industry ID',
+			'id' => Yii::t('Company', 'ID'),
+			'name' => Yii::t('Company', 'Name'),
+			'tag' => Yii::t('Company', 'Tag'),
+			'business_id' => Yii::t('Company', 'Business ID'),
+			'email' => Yii::t('Company', 'Email'),
+			'employees' => Yii::t('Company', 'Employees'),
+			'active' => Yii::t('Company', 'Active'),
+			'create_time' => Yii::t('Company', 'Create Time'),
+			'token_key_id' => Yii::t('Company', 'Token key'),
+			'industry_id' => Yii::t('Company', 'Industry'),
 		];
 	}
 
