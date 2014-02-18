@@ -1,11 +1,12 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
-$db_core = require(__DIR__ . '/db.php');
+$db = require(__DIR__ . '/db.php');
 
 $config = [
 	'id' => 'basic',
 	'basePath' => dirname(__DIR__),
+	'language' => 'fi',
 	'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
 	'components' => [
 		'cache' => [
@@ -25,6 +26,15 @@ $config = [
 			'enablePrettyUrl' => true,
 			'showScriptName' => true,
 		],
+		'i18n' => [
+			'translations' => [
+				'*' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@app/messages',
+					'sourceLanguage' => 'en',
+				],
+			],
+		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
 			'targets' => [
@@ -34,7 +44,7 @@ $config = [
 				],
 			],
 		],
-		'db_core' => $db_core,
+		'db' => $db,
 	],
 	'params' => $params,
 ];
