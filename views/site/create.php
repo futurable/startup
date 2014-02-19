@@ -18,10 +18,16 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 				, 'type' => ActiveForm::TYPE_HORIZONTAL
 			]);
 
-			echo $form->field($company, 'name');
-			echo $form->field($company, 'email');
-			echo $form->field($company, 'industry');
-			echo $form->field($company, 'employees');
+			echo '<div class="form-group">';
+				echo $form->field($company, 'name');
+				echo $form->field($company, 'email');
+				echo $form->field($company, 'industry');
+				echo $form->field($company, 'employees');
+			echo '</div>';
+			
+			echo '<div class="form-group">';
+				
+			echo '</div>';
 			
 			echo Html::submitButton(Yii::t('Company', 'Create'), ['class' => 'btn btn-success']);
 			ActiveForm::end();
