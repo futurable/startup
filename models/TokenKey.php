@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use Yii;
 
 /**
  * This is the model class for table "token_key".
@@ -49,13 +50,13 @@ class TokenKey extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => Yii::t('TokenKey', 'ID'),
-			'token_key' => Yii::t('TokenKey', 'TokenKey'),
+			'token_key' => Yii::t('TokenKey', 'Token key'),
 			'lifetime' => Yii::t('TokenKey', 'Lifetime'),
-			'create_date' => Yii::t('TokenKey', 'CreateDate'),
-			'reclaim_date' => Yii::t('TokenKey', 'ReclaimDate'),
-			'expiration_date' => Yii::t('TokenKey', 'ExpirationDate'),
-			'token_customer_id' => Yii::t('TokenKey', 'TokenCustomer'),
-			'token_setup_id' => Yii::t('TokenKey', 'TokenSetup'),
+			'create_date' => Yii::t('TokenKey', 'Create date'),
+			'reclaim_date' => Yii::t('TokenKey', 'Reclaim date'),
+			'expiration_date' => Yii::t('TokenKey', 'Expiration date'),
+			'token_customer_id' => Yii::t('TokenKey', 'Token customer'),
+			'token_setup_id' => Yii::t('TokenKey', 'Token setup'),
 		];
 	}
 
