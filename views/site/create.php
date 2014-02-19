@@ -14,11 +14,13 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 	<div class="jumbotron">
 		<h1><?php echo Yii::t('Company', 'Create a company'); ?></h1>
 
-		<?php	
+		<?php
 			$form = ActiveForm::begin([
 				'id' => 'create-form'
 				, 'type' => ActiveForm::TYPE_INLINE
 			]);
+
+			echo $form->errorSummary($company);
 		?>
 		
 		<div class="form-group">
