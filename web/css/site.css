@@ -9,6 +9,9 @@ body {
 h1{
 	margin-bottom: 40px;
 }
+h2{
+	text-align: left;
+}
 .disclaimer {
 	margin: 0 auto;
 	text-align: center;
@@ -127,6 +130,6 @@ a.desc:after {
     width: 200px;
     margin: 0 auto;
 }
-#company_info input{
-	width: 300px;
+.block{
+	display: block;
 }
