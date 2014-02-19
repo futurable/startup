@@ -15,8 +15,12 @@ $this->title = 'Futural startup';
 		<p class="lead"><?php echo Yii::t('Company', 'Please provide a token key'); ?>:</p>
 		
 		<?php	
-			$form = ActiveForm::begin(['id' => 'tokenkey-form']);
-			echo $form->field($tokenKey, 'token_key');
+			$form = ActiveForm::begin([
+				'id' => 'tokenkey-form'
+				, 'type' => ActiveForm::TYPE_INLINE
+				, 'formConfig' => ['showLabels'=>false]
+			]);
+			echo "<p>".$form->field($tokenKey, 'token_key')."</p>";
 			echo Html::submitButton(Yii::t('Company', 'Validate'), ['class' => 'btn btn-success']);
 			ActiveForm::end();
 		?>
