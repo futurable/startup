@@ -6,6 +6,10 @@ use Yii;
 use yii\web\Controller;
 use app\models\Company;
 use app\models\TokenKey;
+use app\models\CostbenefitCalculation;
+use app\models\CostbenefitItem;
+use app\models\CostbenefitItemType;
+use app\models\Industry;
 
 class SiteController extends Controller
 {
@@ -35,7 +39,20 @@ class SiteController extends Controller
 
 		if($tokenKey->token_key) {
 			$company = new Company();
-			return $this->render('create', array('tokenKey' => $tokenKey, 'company' => $company));
+			$industry = new Industry();
+			
+            $costBenefitCalculation = new CostbenefitCalculation();
+            
+            $costBenefitItemTypes = CostbenefitItemType::find()->all();
+            
+			return $this->render('create', [
+				'tokenKey' => $tokenKey,
+				'company'=>$company,
+				'industry'=>$industry,
+				'costBenefitCalculation'=>$costBenefitCalculation,
+				'costBenefitItemTypes'=>$costBenefitItemTypes,
+			]);
+			
 		} else {
 			return $this->render('index', array('tokenKey' => $tokenKey));
 		}
