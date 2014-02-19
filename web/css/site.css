@@ -119,3 +119,8 @@ a.desc:after {
 	padding: 10px 20px;
 	margin: 0 0 15px 0;
 }
+
+#tokenkey-token_key{
+    width: 200px;
+    margin: 0 auto;
+}
