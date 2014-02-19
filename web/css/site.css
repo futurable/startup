@@ -6,6 +6,9 @@ body {
     margin: 0;
     padding: 0;
 }
+h1{
+	margin-bottom: 40px;
+}
 .disclaimer {
 	margin: 0 auto;
 	text-align: center;
@@ -123,4 +126,7 @@ a.desc:after {
 #tokenkey-token_key{
     width: 200px;
     margin: 0 auto;
+}
+#company_info input{
+	width: 300px;
 }
