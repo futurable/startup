@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use Yii;
 
 /**
  * This is the model class for table "costbenefit_item".
@@ -42,7 +43,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => 'ID',
-			'value' => 'Value',
+			'value' => Yii::t('CostBenefitItem', 'Value'),
 			'costbenefit_calculation_id' => 'Costbenefit Calculation ID',
 			'costbenefit_item_type_id' => 'Costbenefit Item Type ID',
 		];
