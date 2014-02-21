@@ -23,7 +23,7 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 			echo $form->errorSummary($company);
 		?>
 		
-		<div class="form-group">
+		<div class="form-group" id='company-info'>
 			<h2><?php echo Yii::t('Company', 'Info'); ?></h2>
 				
 			<?php echo $form->field($company, 'name'); ?><br/>
