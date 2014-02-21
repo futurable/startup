@@ -13,6 +13,8 @@ use app\models\Industry;
 
 class SiteController extends Controller
 {
+	private $tokenKey;
+	
 	public function behaviors()
 	{
 		return [
@@ -34,14 +36,16 @@ class SiteController extends Controller
 
 	public function actionIndex()
 	{
-		$tokenKey = new TokenKey();
-		$tokenKey->load($_POST);
+		$this->tokenKey = new TokenKey();
+		$this->tokenKey->load($_POST);
 
+		$tokenKey = $this->tokenKey;
 		# Token key has been sent
 		if($tokenKey->token_key){
 			# Check if the token key is valid
 			if($this->validateTokenKey($tokenKey->token_key) === true){
-				$this->renderCreateCompany();
+				$models = $this->getCreateCompanyModels();
+				return $this->render('create', $models);
 			} else {
 				# Invalid token key
 				# Get the date used
@@ -74,20 +78,23 @@ class SiteController extends Controller
 		return $isValid;
 	}
 	
-	private function renderCreateCompany(){
+	private function getCreateCompanyModels(){
+		$tokenKey = $this->tokenKey;
 		$company = new Company();
 		$industry = new Industry();
-			
+		
 		$costBenefitCalculation = new CostbenefitCalculation();
 		
 		$costBenefitItemTypes = CostbenefitItemType::find()->all();
 		
-		return $this->render('create', [
-				'tokenKey' => $tokenKey,
-				'company'=>$company,
-				'industry'=>$industry,
-				'costBenefitCalculation'=>$costBenefitCalculation,
-				'costBenefitItemTypes'=>$costBenefitItemTypes,
-				]);
+		$render = [
+			'tokenKey' => $tokenKey,
+			'company'=>$company,
+			'industry'=>$industry,
+			'costBenefitCalculation'=>$costBenefitCalculation,
+			'costBenefitItemTypes'=>$costBenefitItemTypes,
+		];
+		
+		return $render;
 	}
 }
