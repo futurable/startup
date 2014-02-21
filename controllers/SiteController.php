@@ -115,8 +115,15 @@ class SiteController extends Controller
 	}
 	
 	private function getEmployeeArray(){
-		# TODO: tie this to the industry
-		$employeeDropdown = array_combine( range(1,10), range(1,10) ) + array_combine( range(10,100,10), range(10,100,10) );
+		# TODO: Tie these to the industry
+		$keys = range(10,100,10);
+		$values = range(10,100,10);
+		foreach($values as $key => $value){
+			$values[$key] = $value."+";
+		}
+		$array2 = array_combine( $keys, $values );
+		
+		$employeeDropdown = array_combine( range(1,9), range(1,9) ) + $array2;
 		
 		return $employeeDropdown;
 	}
