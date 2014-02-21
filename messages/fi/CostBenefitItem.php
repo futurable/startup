@@ -18,9 +18,11 @@
  */
 return array (
   		'Value' => 'Arvo',
+		'Monthly value' => 'Kuukausittainen arvo',
+		'Yearly value' => 'Vuosittainen arvo',
 		'turnover' => 'liikevaihto',
 		'salaries' => 'palkat',
-		'expenses' => 'sivukulut',
+		'expenses' => 'materiaalikulut',
 		'loans' => 'lainat',
 		'rents' => 'vuokrat',
 		'communication' => 'yhteydet',
