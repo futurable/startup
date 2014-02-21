@@ -86,15 +86,29 @@ class SiteController extends Controller
 		$costBenefitCalculation = new CostbenefitCalculation();
 		
 		$costBenefitItemTypes = CostbenefitItemType::find()->all();
+		$industryDropdown = $this->getIndustryDropdown();
+		
 		
 		$render = [
 			'tokenKey' => $tokenKey,
 			'company'=>$company,
 			'industry'=>$industry,
+			'industryDropdown'=>$industryDropdown,
 			'costBenefitCalculation'=>$costBenefitCalculation,
 			'costBenefitItemTypes'=>$costBenefitItemTypes,
 		];
 		
 		return $render;
+	}
+	
+	private function getIndustryDropdown(){
+		# TODO: Tie this to the token key
+		$record = Industry::find()->all();
+		
+		foreach($record as $row){
+			$industryDropdown[$row->id] = $row->description;
+		}
+		
+		return $industryDropdown;
 	}
 }
