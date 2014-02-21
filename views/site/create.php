@@ -30,13 +30,18 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 			<?php echo $form->field($company, 'email'); ?><br/>
 			<?php echo $form->field($company, 'industry_id'); ?><br/>
 			
+			<?php	    
+			    echo $form->field($company, 'industry_id')
+		        ->dropDownList(
+		            $industryArray,
+					['prompt' => "- ".Yii::t('Company', 'Select industry')." -"]
+		        );
+			?><br/>	
+
 			<?php
-				# TODO: tie this to the industry
-				$employeeAmount = array_combine( range(1,10), range(1,10) ) + array_combine( range(10,100,10), range(10,100,10) );
-			    
 			    echo $form->field($company, 'employees')
 		        ->dropDownList(
-		            $employeeAmount
+		            $employeeArray
 		        );		
 			?><br/>
 		</div>
