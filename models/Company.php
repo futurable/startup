@@ -41,6 +41,7 @@ class Company extends \yii\db\ActiveRecord
 	{
 		return [
 			[['name', 'tag', 'business_id', 'email', 'employees', 'create_time', 'token_key_id', 'industry_id'], 'required'],
+			[['email'], 'email'],
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
