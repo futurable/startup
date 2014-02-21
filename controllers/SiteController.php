@@ -86,14 +86,16 @@ class SiteController extends Controller
 		$costBenefitCalculation = new CostbenefitCalculation();
 		
 		$costBenefitItemTypes = CostbenefitItemType::find()->all();
-		$industryDropdown = $this->getIndustryDropdown();
 		
+		$industryArray = $this->getIndustryArray();
+		$employeeArray = $this->getEmployeeArray();
 		
 		$render = [
 			'tokenKey' => $tokenKey,
 			'company'=>$company,
 			'industry'=>$industry,
-			'industryDropdown'=>$industryDropdown,
+			'industryArray'=>$industryArray,
+			'employeeArray'=>$employeeArray,
 			'costBenefitCalculation'=>$costBenefitCalculation,
 			'costBenefitItemTypes'=>$costBenefitItemTypes,
 		];
@@ -101,7 +103,7 @@ class SiteController extends Controller
 		return $render;
 	}
 	
-	private function getIndustryDropdown(){
+	private function getIndustryArray(){
 		# TODO: Tie this to the token key
 		$record = Industry::find()->all();
 		
@@ -110,5 +112,12 @@ class SiteController extends Controller
 		}
 		
 		return $industryDropdown;
+	}
+	
+	private function getEmployeeArray(){
+		# TODO: tie this to the industry
+		$employeeDropdown = array_combine( range(1,10), range(1,10) ) + array_combine( range(10,100,10), range(10,100,10) );
+		
+		return $employeeDropdown;
 	}
 }
