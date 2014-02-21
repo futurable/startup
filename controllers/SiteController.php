@@ -37,25 +37,57 @@ class SiteController extends Controller
 		$tokenKey = new TokenKey();
 		$tokenKey->load($_POST);
 
-		if($tokenKey->token_key) {
-			$company = new Company();
-			$industry = new Industry();
+		# Token key has been sent
+		if($tokenKey->token_key){
+			# Check if the token key is valid
+			if($this->validateTokenKey($tokenKey->token_key) === true){
+				$this->renderCreateCompany();
+			} else {
+				# Invalid token key
+				# Get the date used
+				$record = TokenKey::find()
+				->select(['reclaim_date'])
+				->where(['and', 'token_key=:token_key'])
+				->addParams([':token_key' => $tokenKey->token_key])
+				->one();
+				
+				$tokenKey->addError('token_key', Yii::t('TokenKey', 'Token key is already used on {dateTime}.', ['dateTime'=>$record->reclaim_date] ));
+			}
+		}
+		
+		# Token key has not been sent
+		return $this->render('index', array('tokenKey' => $tokenKey));
+	}
+	
+	private function validateTokenKey($tokenKey){
+		$isValid = false;
+		
+		$record = TokenKey::find()
+			->select(['token_key', 'reclaim_date'])
+			->where(['and', 'token_key=:token_key', 'reclaim_date IS NULL' ])
+			->addParams([':token_key' => $tokenKey])
+			->one();
+		
+		if(!$record) $isValid = false;
+		else $isValid = true;
+		
+		return $isValid;
+	}
+	
+	private function renderCreateCompany(){
+		$company = new Company();
+		$industry = new Industry();
 			
-            $costBenefitCalculation = new CostbenefitCalculation();
-            
-            $costBenefitItemTypes = CostbenefitItemType::find()->all();
-            
-			return $this->render('create', [
+		$costBenefitCalculation = new CostbenefitCalculation();
+		
+		$costBenefitItemTypes = CostbenefitItemType::find()->all();
+		
+		return $this->render('create', [
 				'tokenKey' => $tokenKey,
 				'company'=>$company,
 				'industry'=>$industry,
 				'costBenefitCalculation'=>$costBenefitCalculation,
 				'costBenefitItemTypes'=>$costBenefitItemTypes,
-			]);
-			
-		} else {
-			return $this->render('index', array('tokenKey' => $tokenKey));
-		}
+				]);
 	}
-	
 }
