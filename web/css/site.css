@@ -55,6 +55,7 @@ h2{
 .footer {
 	height: 60px;
 	padding-top: 20px;
+	margin-top: 10px;
 }
 
 .jumbotron {
@@ -132,4 +133,8 @@ a.desc:after {
 }
 .block{
 	display: block;
+}
+
+#company-info input, #company-info select{
+    width: 300px;        
 }
