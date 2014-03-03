@@ -29,6 +29,7 @@ return array (
 		'health' => 'terveys',
 		'sideExpenses' => 'sivukulut',
 		'otherExpenses' => 'muut kulut',
+		'profit' => 'tuotto',
 		'TooltipCommunication' => 'Yrityksen yhteydet ulkomaailmaan. Sisältää puhelimet, internetin, yms. Ei sisällä markkinointikuluja',
 		'TooltipExpenses' => 'Hankkimiskustannukset. Tämä sisältää esim. lopputuotteen kokoonpanoa varten ostettavat osat.',
 		'TooltipHealth' => 'Työntekijöiden terveyteen suunnatut kulut.',
