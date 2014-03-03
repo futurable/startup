@@ -33,7 +33,7 @@ return array (
 		'TooltipExpenses' => 'Hankkimiskustannukset. Tämä sisältää esim. lopputuotteen kokoonpanoa varten ostettavat osat.',
 		'TooltipHealth' => 'Työntekijöiden terveyteen suunnatut kulut.',
 		'TooltipLoans' => 'Lainanhoitokulut. Sisältää koron, maksuerän ja mahdolliset palvelu- tai hoitomaksut.',
-		'TooltipOther' => 'Kulut, jotka eivät sovi muihin kenttiin.',
+		'TooltipOtherExpenses' => 'Kulut, jotka eivät sovi muihin kenttiin.',
 		'TooltipProfit' => 'Yrityksen tulos, joka jää kaikkien kulujen jälkeen. Tämän olisi syytä olla positiivinen, mikäli yritys aikoo pysyä toiminnassa.',
 		'TooltipRents' => 'Vuokrakulut yhteensä. Tämä sisältää toimitilan vuokran, ja mahdollisten varastotilojen vuokran.',
 		'TooltipSalaries' => 'Palkkakulut ilman sivukuluja. Tämä on usein yksi yrityksen suurimmista kiinteistä menoeristä.',
