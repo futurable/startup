@@ -42,20 +42,19 @@ class SiteController extends Controller
 		$tokenKey = $this->tokenKey;
 		# Token key has been sent
 		if($tokenKey->token_key){
+			$record = $this->getReclaimedTokenKey($tokenKey);
+			
 			# Check if the token key is valid
 			if($this->validateTokenKey($tokenKey->token_key) === true){
 				$models = $this->getCreateCompanyModels();
 				return $this->render('create', $models);
-			} else {
-				# Invalid token key
-				# Get the date used
-				$record = TokenKey::find()
-				->select(['reclaim_date'])
-				->where(['and', 'token_key=:token_key'])
-				->addParams([':token_key' => $tokenKey->token_key])
-				->one();
-				
+			} elseif($record == true) {
+				# Token key is already used
 				$tokenKey->addError('token_key', Yii::t('TokenKey', 'Token key is already used on {dateTime}.', ['dateTime'=>$record->reclaim_date] ));
+			}
+			else{
+				# Invalid token key
+				$tokenKey->addError('token_key', Yii::t('TokenKey', 'Invalid token key.'));
 			}
 		}
 		
@@ -76,6 +75,16 @@ class SiteController extends Controller
 		else $isValid = true;
 		
 		return $isValid;
+	}
+	
+	private function getReclaimedTokenKey($tokenKey){
+		$record = TokenKey::find()
+		->select(['reclaim_date'])
+		->where(['and', 'token_key=:token_key'])
+		->addParams([':token_key' => $tokenKey->token_key])
+		->one();
+	
+		return $record;
 	}
 	
 	private function getCreateCompanyModels(){
