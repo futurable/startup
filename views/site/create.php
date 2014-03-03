@@ -7,7 +7,11 @@ use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
 use app\models\CostbenefitItem;
 use app\commands\CBCTableRow;
+use yii\web\View;
 $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
+
+// TODO: fix this
+//$this->registerJs('js/costBenefitCalculation.js');
 ?>
 <div class="site-index">
 
