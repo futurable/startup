@@ -97,6 +97,7 @@ class SiteController extends Controller
 		$costBenefitItemTypes = CostbenefitItemType::find()->all();
 		
 		$industryArray = $this->getIndustryArray();
+		$industrySetupArray = $this->getIndustrySetupArray();
 		$employeeArray = $this->getEmployeeArray();
 		
 		$render = [
@@ -104,6 +105,7 @@ class SiteController extends Controller
 			'company'=>$company,
 			'industry'=>$industry,
 			'industryArray'=>$industryArray,
+			'industrySetupArray'=>$industrySetupArray,
 			'employeeArray'=>$employeeArray,
 			'costBenefitCalculation'=>$costBenefitCalculation,
 			'costBenefitItemTypes'=>$costBenefitItemTypes,
@@ -135,5 +137,21 @@ class SiteController extends Controller
 		$employeeDropdown = array_combine( range(1,9), range(1,9) ) + $array2;
 		
 		return $employeeDropdown;
+	}
+	
+	private function getIndustrySetupArray(){
+		// Get industry setups
+		$industrySetups = IndustrySetup::model()->findAll();
+		foreach($industrySetups as $industrySetup){
+			$IndustrySetupArray[$industrySetup->industry_id] = array(
+				'turnover' => $industrySetup->turnover,
+				'minWage' => $industrySetup->minimum_wage_rate,
+				'avgWage' => $industrySetup->average_wage_rate,
+				'maxWage' => $industrySetup->maximum_wage_rate,
+				'rents' => $industrySetup->rents,
+				'communication' => $industrySetup->communication,
+			);
+		}
+		return $IndustrySetupArray;
 	}
 }
