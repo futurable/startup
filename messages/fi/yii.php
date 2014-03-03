@@ -35,7 +35,7 @@ return array (
   'Only files with these extensions are allowed: {extensions}.' => '',
   'Only files with these mimeTypes are allowed: {mimeTypes}.' => '',
   'Page not found.' => '',
-  'Please fix the following errors:' => '',
+  'Please fix the following errors:' => 'Ole hyvä ja korjaa seuraavat virheet:',
   'Please upload a file.' => '',
   'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.' => '',
   'The file "{file}" is not an image.' => '',
