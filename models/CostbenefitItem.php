@@ -16,6 +16,8 @@ use Yii;
  */
 class CostbenefitItem extends \yii\db\ActiveRecord
 {
+	public $yearlyValue;
+	
 	/**
 	 * @inheritdoc
 	 */
