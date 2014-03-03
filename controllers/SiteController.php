@@ -144,7 +144,7 @@ class SiteController extends Controller
 		// Get industry setups
 		$industrySetups = IndustrySetup::find()->all();
 		foreach($industrySetups as $industrySetup){
-			$IndustrySetupArray[$industrySetup->industry_id] = array(
+			$industrySetupArray[$industrySetup->industry_id] = array(
 				'turnover' => $industrySetup->turnover,
 				'minWage' => $industrySetup->minimum_wage_rate,
 				'avgWage' => $industrySetup->average_wage_rate,
@@ -153,6 +153,6 @@ class SiteController extends Controller
 				'communication' => $industrySetup->communication,
 			);
 		}
-		return $IndustrySetupArray;
+		return $industrySetupArray;
 	}
 }
