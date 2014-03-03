@@ -10,6 +10,7 @@ use app\models\CostbenefitCalculation;
 use app\models\CostbenefitItem;
 use app\models\CostbenefitItemType;
 use app\models\Industry;
+use app\models\IndustrySetup;
 
 class SiteController extends Controller
 {
@@ -141,7 +142,7 @@ class SiteController extends Controller
 	
 	private function getIndustrySetupArray(){
 		// Get industry setups
-		$industrySetups = IndustrySetup::model()->findAll();
+		$industrySetups = IndustrySetup::find()->all();
 		foreach($industrySetups as $industrySetup){
 			$IndustrySetupArray[$industrySetup->industry_id] = array(
 				'turnover' => $industrySetup->turnover,
