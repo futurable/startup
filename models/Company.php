@@ -26,6 +26,8 @@ use Yii;
  */
 class Company extends \yii\db\ActiveRecord
 {
+	public $profit;
+	
 	/**
 	 * @inheritdoc
 	 */
@@ -63,6 +65,7 @@ class Company extends \yii\db\ActiveRecord
 			'email' => Yii::t('Company', 'Email'),
 			'employees' => Yii::t('Company', 'Employees'),
 			'active' => Yii::t('Company', 'Active'),
+			'profit' => Yii::t('Company', 'Profit'),
 			'create_time' => Yii::t('Company', 'Create Time'),
 			'token_key_id' => Yii::t('Company', 'Token key'),
 			'industry_id' => Yii::t('Company', 'Industry'),
