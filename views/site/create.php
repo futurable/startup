@@ -28,7 +28,6 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 				
 			<?php echo $form->field($company, 'name'); ?><br/>
 			<?php echo $form->field($company, 'email'); ?><br/>
-			<?php echo $form->field($company, 'industry_id'); ?><br/>
 			
 			<?php	    
 			    echo $form->field($company, 'industry_id')
