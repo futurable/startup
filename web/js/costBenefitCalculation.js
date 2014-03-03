@@ -179,20 +179,21 @@ $(document).ready(function(){
     }
     
     updateProfit = function(){
-        var turnover = Number($("#CostbenefitItem_turnover_value").val());
-        var expenses = Number($("#CostbenefitItem_expenses_value").val());
-        var salaries = Number($("#CostbenefitItem_salaries_value").val());
-        var side = Number($("#CostbenefitItem_sideExpenses_value").val());
-        var loans = Number($("#CostbenefitItem_loans_value").val());
-        var rents = Number($("#CostbenefitItem_rents_value").val());
-        var communication = Number($("#CostbenefitItem_communication_value").val());
-        var health = Number($("#CostbenefitItem_health_value").val());
-        var other = Number($("#CostbenefitItem_other_value").val());
+        var turnover = Number($("#CostbenefitItem_turnover_monthly input").val());
+        var expenses = Number($("#CostbenefitItem_expenses_monthly input").val());
+        var salaries = Number($("#CostbenefitItem_salaries_monthly input").val());
+        var side = Number($("#CostbenefitItem_sideExpenses_monthly input").val());
+        var loans = Number($("#CostbenefitItem_loans_monthly input").val());
+        var rents = Number($("#CostbenefitItem_rents_monthly input").val());
+        var communication = Number($("#CostbenefitItem_communication_monthly input").val());
+        var health = Number($("#CostbenefitItem_health_monthly input").val());
+        var other = Number($("#CostbenefitItem_otherExpenses_monthly input").val());
         
         var profit = Math.round(turnover-expenses-salaries-side-loans-rents-communication-health-other);
-           
-        $("#_profitmonthly").val(profit);
-        $("#_profityearly").val(profit*12);
+        if(!$.isNumeric(profit)) profit = 0;
+        
+        $("#CostbenefitItem_profit_monthly input").val(profit);
+        $("#CostbenefitItem_profit_yearly input").val(profit*12);
     }
     
     fillYearlyFields = function(){
