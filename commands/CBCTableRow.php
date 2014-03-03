@@ -13,9 +13,13 @@ class CBCTableRow extends Controller
     	$item = new CostbenefitItem();
     	
     	$label = ucfirst( Yii::t('CostBenefitItem', $object->name) );
+    	$monthlyId = 'CostbenefitItem_'.$object->name."_monthly";
+    	$yearlyId = 'CostbenefitItem_'.$object->name."_yearly";
+    	
     	$tooltip = Yii::t('CostBenefitItem', 'Tooltip'.ucfirst($object->name));
-    	$monthlyValue = $form->field($item, 'value', ['options'=>['title' => $tooltip]]);
-    	$yearlyValue = $form->field($item, 'yearlyValue', ['options'=>['title' => $tooltip]]);
+    	
+    	$monthlyValue = $form->field($item, 'value', ['options'=>['title' => $tooltip, 'id' => $monthlyId]]);
+    	$yearlyValue = $form->field($item, 'yearlyValue', ['options'=>['title' => $tooltip, 'id' => $yearlyId]]);
     	
 		$html = "
 			<tr>
