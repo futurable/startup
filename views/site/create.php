@@ -53,8 +53,8 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 			<table id='costBenefitCalculationTable'>
 				<tr>
 					<th></th>
-					<th><?php echo  Yii::t('Company', 'Monthly') ?> (&euro;)</th>
-				  	<th><?php echo  Yii::t('Company', 'Yearly') ?> (&euro;)</th>
+					<th><?php echo Yii::t('Company', 'Monthly') ?> (&euro;)</th>
+				  	<th><?php echo Yii::t('Company', 'Yearly') ?> (&euro;)</th>
 					<th></th>
 				</tr>
 				<?php
@@ -62,6 +62,11 @@ $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 					foreach($costBenefitItemTypes as $costBenefitItemType){
 						echo CBCTableRow::getRow($form, $costBenefitItemType); 
 					}
+				?>
+				<?php
+					$profit = new $costBenefitItemType();
+					$profit->name = 'profit';
+					echo CBCTableRow::getRow($form, $profit); 
 				?>
 			</table>
 		</div>
