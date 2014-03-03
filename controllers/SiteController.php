@@ -117,7 +117,7 @@ class SiteController extends Controller
 		$record = Industry::find()->all();
 		
 		foreach($record as $row){
-			$industryDropdown[$row->id] = $row->description;
+			$industryDropdown[$row->id] = Yii::t('Industry', $row->name);
 		}
 		
 		return $industryDropdown;
