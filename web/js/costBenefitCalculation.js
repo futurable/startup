@@ -77,12 +77,12 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateYearlyField = function( field ){
-        var currentValue = field.attr('value');
-        var currentId = field.attr('id');
+    	var currentId = field.parent().attr('id');
+        var currentValue = $('#' + currentId + ' input').val();
         var yearlyValue = currentValue * 12;
         
-        var yearlyId = "#_"+currentId.split('_')[1]+"yearly";
-        $(yearlyId).val(yearlyValue);
+        var yearlyId = currentId.replace("monthly","yearly");
+        $('#' + yearlyId + ' input').val(yearlyValue);
     };
     
     updateSalaries = function(){
