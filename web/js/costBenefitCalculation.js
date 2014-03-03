@@ -13,8 +13,8 @@ $(document).ready(function(){
     updateAllFields = function(){
         updateSalaries();
         updateSideExpenses();
-        updateRents();
-        updateCommunication();
+        //updateRents();
+        //updateCommunication();
         updateTurnover();
         updateExpenses();
         updateLoans();
@@ -86,15 +86,15 @@ $(document).ready(function(){
     };
     
     updateSalaries = function(){
-        var employees = $("#Company_employees option:selected").text();
-        var industryId = $("#Company_industry_id").val();
+        var employees = $("#company-employees option:selected").val();
+        var industryId = $("#company-industry_id").val();
         var industrySetup = IndustrySetupArray[industryId];
 
         var avgWage = industrySetup['avgWage'];
         
         var salaries = avgWage*employees;
-        $("#CostbenefitItem_salaries_value").val(salaries);
-        $("#_salariesyearly").val(salaries*12);
+        $("#CostbenefitItem_salaries_monthly input").val(salaries);
+        $("#CostbenefitItem_salaries_yearly input").val(salaries*12);
     }
     
     updateSideExpenses = function(){
@@ -106,17 +106,17 @@ $(document).ready(function(){
     }
     
     updateTurnover = function(){
-        var industryId = $("#Company_industry_id").val();
+        var industryId =  $("#company-industry_id").val();
         var industrySetup = IndustrySetupArray[industryId];
         
         var avgWage = industrySetup['avgWage'];
-        var employees = $("#Company_employees option:selected").text();
+        var employees = $("#company-employees option:selected").text();
         var salaries = avgWage*(employees-1)*11;
         
         var turnover = parseInt(industrySetup['turnover']) + parseInt(salaries);
         
-        $("#CostbenefitItem_turnover_value").val(turnover);
-        $("#_turnoveryearly").val(turnover*12);
+        $("#CostbenefitItem_turnover_monthly input").val(turnover);
+        $("#CostbenefitItem_turnover_yearly input").val(turnover*12);
     }
     
     updateExpenses = function(){
