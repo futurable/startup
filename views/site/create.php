@@ -8,8 +8,13 @@ use yii\helpers\Html;
 use app\models\CostbenefitItem;
 use app\commands\CBCTableRow;
 use yii\web\View;
+use yii\helpers\Json;
 $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 
+$IndustrySetupJSON = json_encode($industrySetupArray);
+$IndustrySetupJS = "var IndustrySetupArray = $IndustrySetupJSON;\n";
+
+$this->registerJs($IndustrySetupJS);
 // TODO: fix this
 //$this->registerJs('js/costBenefitCalculation.js');
 ?>
