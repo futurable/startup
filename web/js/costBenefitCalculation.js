@@ -45,13 +45,12 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateCalculationFields = function( field ){
-        var currentId = field.attr('id');
-        
-        if(currentId.substring(0,15) === "CostbenefitItem"){
-            updateYearlyField(field);
+        var currentId = field.parent().attr('id');
+        if(currentId.indexOf("monthly") >= 0){
+        	updateYearlyField(field);
         }
-        else if(currentId.substring(0,1) === "_"){
-            updateMonthlyField(field);
+        else if(currentId.indexOf("yearly") >= 0){
+        	updateMonthlyField(field);
         }
     };
     
@@ -62,12 +61,13 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateMonthlyField = function( field ){
-        var currentValue = field.attr('value');
-        var currentId = field.attr('id');
+    	var currentId = field.parent().attr('id');
+        var currentValue = $('#' + currentId + ' input').val();
+        
         var monthlyValue = Math.round(currentValue/12*100) / 100;
         
-        var monthlyId = "#CostbenefitItem"+currentId.replace("yearly","")+"_value";
-        $(monthlyId).val(monthlyValue);
+        var monthlyId = currentId.replace("yearly","monthly");
+        $('#' + monthlyId + ' input').val(monthlyValue);
     };
     
      /**
