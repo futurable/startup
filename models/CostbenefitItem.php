@@ -32,8 +32,8 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['value', 'costbenefit_calculation_id', 'costbenefit_item_type_id'], 'required'],
-			[['value'], 'number'],
+			[['value', 'yearlyValue', 'costbenefit_calculation_id', 'costbenefit_item_type_id'], 'required'],
+			[['value', 'yearlyValue'], 'number'],
 			[['costbenefit_calculation_id', 'costbenefit_item_type_id'], 'integer']
 		];
 	}
