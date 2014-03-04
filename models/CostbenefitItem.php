@@ -45,7 +45,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => 'ID',
-			'value' => Yii::t('CostBenefitItem', 'value'),
+			'value' => Yii::t('CostBenefitItem', 'Value'),
 			'yearlyValue' => Yii::t('CostBenefitItem', 'Yearly value'),
 			'costbenefit_calculation_id' => 'Costbenefit Calculation ID',
 			'costbenefit_item_type_id' => 'Costbenefit Item Type ID',
