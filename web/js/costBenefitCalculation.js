@@ -95,7 +95,7 @@ $(document).ready(function(){
         
         var salaries = avgWage*employees;
         $("#costbenefititem-monthly-salaries-value").val(salaries);
-        $("#costbenefititem-monthly-salaries-value").val(salaries*12);
+        $("#costbenefititem-yearly-salaries-value").val(salaries*12);
     };
     
     updateSideExpenses = function(){
@@ -171,14 +171,14 @@ $(document).ready(function(){
     
     updateHealth = function(){
     	// TODO
-        $("#costbenefititem-health-monthly-value").val(0);
-        $("#costbenefititem-health-yearly-value").val(0);
+        $("#costbenefititem-monthly-health-value").val(0);
+        $("#costbenefititem-yearly-health-value").val(0);
     };
     
     updateOtherExpenses = function(){
     	// TODO
-        $("#costbenefititem-otherexpenses-monthly-value").val(0);
-        $("#costbenefititem-otherexpenses-yearly-value").val(0);
+        $("#costbenefititem-monthly-otherexpenses-value").val(0);
+        $("#costbenefititem-yearly-otherexpenses-value").val(0);
     };
     
     updateProfit = function(){
@@ -195,7 +195,7 @@ $(document).ready(function(){
         var profit = Math.round(turnover-expenses-salaries-side-loans-rents-communication-health-other);
         if(!$.isNumeric(profit)) profit = 0;
         
-        $("#costbenefititem-profit-monthly-value").val(profit);
+        $("#costbenefititem-monthly-profit-value").val(profit);
         $("#costbenefititem-profit-yearly-value").val(profit*12);
     };
     
@@ -208,5 +208,5 @@ $(document).ready(function(){
     };
     
     updateProfit();
-    fillYearlyFields();
+    //fillYearlyFields();
 });
