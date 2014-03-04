@@ -27,15 +27,15 @@ $(document).ready(function(){
     
     $("#CostbenefitItem_turnover_monthly").keyup(function(){
         updateExpenses();
-    })
+    });
     
     $("#CostbenefitItem_salaries_monthly").keyup(function(){
         updateSideExpenses();
-    })
+    });
     
     $("#costBenefitCalculationTable input").keyup(function(){
         updateCalculationFields($(this));
-        updateProfit(this);
+        updateProfit($(this));
     });
     
     /**
