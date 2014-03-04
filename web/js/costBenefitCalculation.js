@@ -13,8 +13,8 @@ $(document).ready(function(){
     updateAllFields = function(){
         updateSalaries();
         updateSideExpenses();
-        //updateRents();
-        //updateCommunication();
+        updateRents();
+        updateCommunication();
         updateTurnover();
         updateExpenses();
         updateLoans();
@@ -149,7 +149,7 @@ $(document).ready(function(){
     updateRents = function(){
         var industryId = $("#company-industry_id").val();
         var industrySetup = IndustrySetupArray[industryId];
-        var employees = $("#company-employees option:selected").text();
+        var employees = $("#company-employees option:selected").val();
         
         var rents = parseInt(industrySetup['rents']) * (1+Math.floor((parseInt(employees)/5)));
         
@@ -158,24 +158,26 @@ $(document).ready(function(){
     }
     
     updateCommunication = function(){
-        var industryId = $("#Company_industry_id").val();
+        var industryId = $("#company-industry_id").val();
         var industrySetup = IndustrySetupArray[industryId];
-        var employees = $("#Company_employees option:selected").text();
+        var employees = $("#company-employees option:selected").val();
         
         var communication = Math.round(parseInt(industrySetup['communication'])*(1+(parseInt(employees)-1)*0.2));
         
-        $("#CostbenefitItem_communication_value").val(communication);
-        $("#_communicationyearly").val(communication*12); 
+        $("#CostbenefitItem_communication_monthly input").val(communication);
+        $("CostbenefitItem_communication_yearly input").val(communication*12); 
     }
     
     updateHealth = function(){
-        $("#CostbenefitItem_health_value").val(0);
-        $("#_healthyearly").val(0);
+    	// TODO
+        $("#CostbenefitItem_health_monthly input").val(0);
+        $("#CostbenefitItem_health_yearly input").val(0);
     }
     
     updateOther = function(){
-        $("#CostbenefitItem_other_value").val(0);
-        $("#_otheryearly").val(0);
+    	// TODO
+        $("#CostbenefitItem_otherExpenses_monthly input").val(0);
+        $("#CostbenefitItem_otherExpenses_yearly input").val(0);
     }
     
     updateProfit = function(){
