@@ -171,14 +171,14 @@ $(document).ready(function(){
     
     updateHealth = function(){
     	// TODO
-        $("#costbenefitItem-health-monthly-value").val(0);
-        $("#costbenefitItem-health-yearly-value").val(0);
+        $("#costbenefititem-health-monthly-value").val(0);
+        $("#costbenefititem-health-yearly-value").val(0);
     };
     
     updateOtherExpenses = function(){
     	// TODO
-        $("#CostbenefitItem_otherExpenses_monthly input").val(0);
-        $("#CostbenefitItem_otherExpenses_yearly input").val(0);
+        $("#costbenefititem-otherexpenses-monthly-value").val(0);
+        $("#costbenefititem-otherexpenses-yearly-value").val(0);
     };
     
     updateProfit = function(){
