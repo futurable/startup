@@ -99,11 +99,11 @@ $(document).ready(function(){
     };
     
     updateSideExpenses = function(){
-        var salaries = $("#CostbenefitItem_salaries_monthly input").val();
+        var salaries = $("#costbenefititem-monthly-salaries-value").val();
         var expenses = Math.round( salaries * 0.3 );
         
-        $("#CostbenefitItem_sideExpenses_monthly input").val(expenses);
-        $("#CostbenefitItem_sideExpenses_yearly input").val(expenses*12);
+        $("#costbenefititem-monthly-sideexpenses-value").val(expenses);
+        $("#costbenefititem-yearly-sideexpenses-value").val(expenses*12);
     };
     
     updateTurnover = function(){
