@@ -165,7 +165,7 @@ $(document).ready(function(){
         var communication = Math.round(parseInt(industrySetup['communication'])*(1+(parseInt(employees)-1)*0.2));
         
         $("#CostbenefitItem_communication_monthly input").val(communication);
-        $("CostbenefitItem_communication_yearly input").val(communication*12); 
+        $("#CostbenefitItem_communication_yearly input").val(communication*12); 
     }
     
     updateHealth = function(){
