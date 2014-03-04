@@ -111,7 +111,7 @@ $(document).ready(function(){
         var industrySetup = IndustrySetupArray[industryId];
         
         var avgWage = industrySetup['avgWage'];
-        var employees = $("#company-employees option:selected").text();
+        var employees = $("#company-employees option:selected").val();
         var salaries = avgWage*(employees-1)*11;
         
         var turnover = parseInt(industrySetup['turnover']) + parseInt(salaries);
@@ -206,6 +206,6 @@ $(document).ready(function(){
         });
     };
     
-    updateProfit();
+    //updateProfit();
     //fillYearlyFields();
 });
