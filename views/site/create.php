@@ -34,11 +34,13 @@ $this->registerJs($industrySetupJS, View::POS_HEAD);
 		
 		<div class="form-group" id='company-info'>
 			<h2><?php echo Yii::t('Company', 'Info'); ?></h2>
-				
-			<?php echo $form->field($company, 'name'); ?><br/>
-			<?php echo $form->field($company, 'email'); ?><br/>
 			
-			<?php	    
+			<?php echo $form->field($company, 'name', ['options'=>['title'=>Yii::t('Company', 'The company name. Be creative and stand out!')]]); ?><br/>
+			
+			<?php echo $form->field($company, 'email', ['options'=>['title'=>Yii::t('Company', 'The company email. You will receive the account information here.')]]); ?><br/>
+			
+			<label for='company-industry_id'><?php echo Yii::t('Company', 'Industry'); ?></label><br/>
+			<?php
 			    echo $form->field($company, 'industry_id')
 		        ->dropDownList(
 		            $industryArray,
@@ -46,6 +48,7 @@ $this->registerJs($industrySetupJS, View::POS_HEAD);
 		        );
 			?><br/>	
 
+			<label for='company-employees'><?php echo Yii::t('Company', 'Employees'); ?></label><br/>
 			<?php
 			    echo $form->field($company, 'employees')
 		        ->dropDownList(
