@@ -17,19 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create date' => '',
-  'Expiration date' => '',
-  'Reclaim date' => '',
-  'Token customer' => '',
-  'Token key' => '',
-  'Token setup' => '',
-  'CreateDate' => '@@Luontipäivä@@',
-  'ExpirationDate' => '@@Erääntymispäivä@@',
-  'ReclaimDate' => '@@Käyttöönottopäivä@@',
-  'TokenCustomer' => '@@Avaimen asiakas@@',
-  'TokenKey' => '@@Perustamisavain@@',
-  'TokenKey_\'{value}\'_AlreadyUsedOn_{formattedDate}' => '@@Perustamisavain \'{value}\' on jo käytetty {formattedDate}@@',
-  'TokenSetup' => '@@Avaimen asetukset@@',
+  'Create date' => 'Luontipäivä',
+  'Expiration date' => 'Erääntymispäivä',
+  'Reclaim date' => 'Käyttöönottopäivä',
+  'Token customer' => 'Avaimen asiakas',
+  'Token key' => 'Perustamisavain',
+  'Token setup' => 'Avaimen asetukset',
   'ID' => 'ID',
   'Lifetime' => 'Kesto',
 );
