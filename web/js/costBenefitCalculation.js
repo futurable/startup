@@ -27,15 +27,16 @@ $(document).ready(function(){
     
     $("#CostbenefitItem_turnover_monthly").keyup(function(){
         updateExpenses();
+        updateProfit();
     });
     
     $("#CostbenefitItem_salaries_monthly").keyup(function(){
         updateSideExpenses();
     });
     
-    $("#costBenefitCalculationTable input").keyup(function(){
+    $("#costBenefitCalculationTable input").keyup(function(){;
         updateCalculationFields($(this));
-        updateProfit($(this));
+        updateProfit();
     });
     
     /**
@@ -45,12 +46,16 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateCalculationFields = function( field ){
-        var currentId = field.parent().attr('id');
+    	// Get the parent
+    	// TODO: this shoulb be done more spesific
+    	var parent = field.parent().parent();
+    	
+        var currentId = parent.attr('id');
         if(currentId.indexOf("monthly") >= 0){
-        	updateYearlyField(field);
+        	updateYearlyField(parent);
         }
         else if(currentId.indexOf("yearly") >= 0){
-        	updateMonthlyField(field);
+        	updateMonthlyField(parent);
         }
     };
     
@@ -61,11 +66,11 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateMonthlyField = function( field ){
-    	var currentId = field.parent().attr('id');
+    	var currentId = field.attr('id');
         var currentValue = $('#' + currentId + ' input').val();
         
         var monthlyValue = Math.round(currentValue/12*100) / 100;
-        
+       
         var monthlyId = currentId.replace("yearly","monthly");
         $('#' + monthlyId + ' input').val(monthlyValue);
     };
@@ -77,7 +82,7 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateYearlyField = function( field ){
-    	var currentId = field.parent().attr('id');
+    	var currentId = field.attr('id');
         var currentValue = $('#' + currentId + ' input').val();
         var yearlyValue = currentValue * 12;
         
@@ -199,7 +204,7 @@ $(document).ready(function(){
     };
     
     fillYearlyFields = function(){
-        $("#costBenefitCalculation input").each(function() {
+        $("#costBenefitCalculationTable input").each(function() {
             if(currentId.indexOf("monthly") >= 0){
                updateYearlyField($(this));
             }
