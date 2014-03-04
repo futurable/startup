@@ -134,7 +134,7 @@ $(document).ready(function(){
         var sideExpenses = parseInt($("#CostbenefitItem_sideExpenses_monthly input").val());
         var rents = parseInt($("#CostbenefitItem_rents_monthly input").val());
         var communication = parseInt($("#CostbenefitItem_communication_monthly input").val());
-        alert( expenses+" "+salaries+" "+sideExpenses+" "+rents+" "+communication);
+
         // Calculate loan sum. 3x all expenses + one months expenses
         loanSum = (expenses+salaries+sideExpenses+rents+communication)*3 + expenses;
         var interest = 3.3 / 100 / 12;
@@ -147,14 +147,14 @@ $(document).ready(function(){
     }
     
     updateRents = function(){
-        var industryId = $("#Company_industry_id").val();
+        var industryId = $("#company-industry_id").val();
         var industrySetup = IndustrySetupArray[industryId];
-        var employees = $("#Company_employees option:selected").text();
+        var employees = $("#company-employees option:selected").text();
         
         var rents = parseInt(industrySetup['rents']) * (1+Math.floor((parseInt(employees)/5)));
         
-        $("#CostbenefitItem_rents_value").val(rents);
-        $("#_rentsyearly").val(rents*12);       
+        $("#CostbenefitItem_rents_monthly input").val(rents);
+        $("#CostbenefitItem_rents_yearly input").val(rents*12);       
     }
     
     updateCommunication = function(){
