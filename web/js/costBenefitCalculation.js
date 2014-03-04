@@ -182,21 +182,21 @@ $(document).ready(function(){
     };
     
     updateProfit = function(){
-        var turnover = Number($("#CostbenefitItem_turnover_monthly input").val());
-        var expenses = Number($("#CostbenefitItem_expenses_monthly input").val());
-        var salaries = Number($("#CostbenefitItem_salaries_monthly input").val());
-        var side = Number($("#CostbenefitItem_sideExpenses_monthly input").val());
-        var loans = Number($("#CostbenefitItem_loans_monthly input").val());
-        var rents = Number($("#CostbenefitItem_rents_monthly input").val());
-        var communication = Number($("#CostbenefitItem_communication_monthly input").val());
-        var health = Number($("#CostbenefitItem_health_monthly input").val());
-        var other = Number($("#CostbenefitItem_otherExpenses_monthly input").val());
+        var turnover = Number($("#costbenefititem-turnover-monthly-value").val());
+        var expenses = Number($("#costbenefititem-expenses-monthly-value").val());
+        var salaries = Number($("#costbenefititem-salary-monthly-value").val());
+        var side = Number($("#costbenefititem-sideexpenses-monthly-value").val());
+        var loans = Number($("#costbenefititem-loans-monthly-value").val());
+        var rents = Number($("#costbenefititem-rents-monthly-value").val());
+        var communication = Number($("#costbenefititem-communication-monthly-value").val());
+        var health = Number($("#costbenefititem-health-monthly-value").val());
+        var other = Number($("#costbenefititem-otherexpenses-monthly-value").val());
         
         var profit = Math.round(turnover-expenses-salaries-side-loans-rents-communication-health-other);
         if(!$.isNumeric(profit)) profit = 0;
         
-        $("#CostbenefitItem_profit_monthly input").val(profit);
-        $("#CostbenefitItem_profit_yearly input").val(profit*12);
+        $("#costbenefititem-profit-monthly-value").val(profit);
+        $("#costbenefititem-profit-yearly-value").val(profit*12);
     };
     
     fillYearlyFields = function(){
