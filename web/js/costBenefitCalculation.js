@@ -79,11 +79,11 @@ $(document).ready(function(){
      */
     updateYearlyField = function( field ){
     	var currentId = field.attr('id');
-        var currentValue = $('#' + currentId + ' input').val();
+        var currentValue = $(field).val();
         var yearlyValue = currentValue * 12;
         
         var yearlyId = currentId.replace("monthly","yearly");
-        $('#' + yearlyId + ' input').val(yearlyValue);
+        $('#'+yearlyId).val(yearlyValue);
     };
     
     updateSalaries = function(){
