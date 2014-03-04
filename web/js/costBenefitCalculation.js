@@ -154,8 +154,8 @@ $(document).ready(function(){
         
         var rents = parseInt(industrySetup['rents']) * (1+Math.floor((parseInt(employees)/5)));
         
-        $("#CostbenefitItem_rents_monthly input").val(rents);
-        $("#CostbenefitItem_rents_yearly input").val(rents*12);       
+        $("#costbenefititem-monthly-rents-value").val(rents);
+        $("#costbenefititem-yearly-rents-value").val(rents*12);       
     };
     
     updateCommunication = function(){
