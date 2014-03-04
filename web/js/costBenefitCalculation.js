@@ -171,8 +171,8 @@ $(document).ready(function(){
     
     updateHealth = function(){
     	// TODO
-        $("#CostbenefitItem_health_monthly input").val(0);
-        $("#CostbenefitItem_health_yearly input").val(0);
+        $("#costbenefitItem-health-monthly-value").val(0);
+        $("#costbenefitItem-health-yearly-value").val(0);
     };
     
     updateOtherExpenses = function(){
