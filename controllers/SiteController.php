@@ -95,7 +95,7 @@ class SiteController extends Controller
 		
 		$costBenefitCalculation = new CostbenefitCalculation();
 		
-		$costBenefitItemTypes = CostbenefitItemType::find()->all();
+		$costBenefitItemTypes = CostbenefitItemType::find()->orderBy('order')->all();
 		
 		$industryArray = $this->getIndustryArray();
 		$industrySetupArray = $this->getIndustrySetupArray();
