@@ -134,7 +134,13 @@ a.desc:after {
 .block{
 	display: block;
 }
+#company-info label{
+	padding-top: 15px;
+}
 
 #company-info input, #company-info select{
     width: 300px;        
+}
+#company-info{
+	padding-right: 40px;
 }
