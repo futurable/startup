@@ -205,7 +205,7 @@ $(document).ready(function(){
     
     fillYearlyFields = function(){
         $("#costBenefitCalculationTable input").each(function() {
-            if(currentId.indexOf("monthly") >= 0){
+            if($(this).parent().parent().attr('id').indexOf("monthly") >= 0){
                updateYearlyField($(this));
             }
         });
