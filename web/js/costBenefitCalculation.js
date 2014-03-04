@@ -116,8 +116,8 @@ $(document).ready(function(){
         
         var turnover = parseInt(industrySetup['turnover']) + parseInt(salaries);
         
-        $("#CostbenefitItem_turnover_monthly input").val(turnover);
-        $("#CostbenefitItem_turnover_yearly input").val(turnover*12);
+        $("#costbenefititem-monthly-turnover-value").val(turnover);
+        $("#costbenefititem-yearly-turnover-value").val(turnover*12);
     };
     
     updateExpenses = function(){
