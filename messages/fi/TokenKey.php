@@ -18,7 +18,7 @@
  */
 return array (
   'Invalid token key.' => 'Virheellinen perustamisavain',
-  'Token key is already used on {dateTime}.' => 'Perustamisavain käytetty {dateTime}',
+  'Token key is already used on {dateTime}.' => 'Perustamisavain on käytetty {dateTime}',
   'Create date' => 'Luontipäivä',
   'Expiration date' => 'Erääntymispäivä',
   'ID' => 'ID',
