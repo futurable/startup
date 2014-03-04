@@ -19,9 +19,11 @@
 return array (
   'Create date' => '',
   'Expiration date' => '',
+  'Invalid token key.' => '',
   'Reclaim date' => '',
   'Token customer' => '',
   'Token key' => '',
+  'Token key is already used on {dateTime}.' => '',
   'Token setup' => '',
   'CreateDate' => '@@Create date@@',
   'ExpirationDate' => '@@Expiration date@@',

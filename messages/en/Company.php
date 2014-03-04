@@ -19,9 +19,12 @@
 return array (
   'Active' => '',
   'Business ID' => '',
+  'Cost-benefit calculation' => '',
   'Create Time' => '',
   'Create a company' => '',
+  'Info' => '',
   'Please provide a token key' => '',
+  'Select industry' => '',
   'Token key' => '',
   'Validate' => '',
   'Welcome' => '',
@@ -49,7 +52,6 @@ return array (
   'Password' => '@@Password@@',
   'PleaseBePatient' => '@@Please be patient!@@',
   'PleaseGiveATokenKey' => '@@Please give a token key@@',
-  'Profit' => '@@Profit@@',
   'Rents' => '@@Rents@@',
   'Salaries' => '@@Salaries@@',
   'SelectIndustry' => '@@Select industry@@',
@@ -90,6 +92,7 @@ return array (
   'Industry' => '@@Industry@@',
   'Monthly' => '@@Monthly@@',
   'Name' => '@@Name@@',
+  'Profit' => '@@Profit@@',
   'Tag' => '@@Tag@@',
   'Yearly' => '@@Yearly@@',
 );
