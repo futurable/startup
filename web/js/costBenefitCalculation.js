@@ -25,12 +25,12 @@ $(document).ready(function(){
     
     $("#company-industry_id,#company-employees").change(updateAllFields);
     
-    $("#CostbenefitItem_turnover_monthly").keyup(function(){
+    $("#CostbenefitItem_turnover_monthly,#CostbenefitItem_turnover_yearly").keyup(function(){
         updateExpenses();
         updateProfit();
     });
     
-    $("#CostbenefitItem_salaries_monthly").keyup(function(){
+    $("#CostbenefitItem_salaries_monthly,#CostbenefitItem_salaries_yearly").keyup(function(){
         updateSideExpenses();
     });
     
