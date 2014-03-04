@@ -33,7 +33,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	{
 		return [
 			[['value', 'yearlyValue', 'costbenefit_calculation_id', 'costbenefit_item_type_id'], 'required'],
-			[['value', 'yearlyValue'], 'number'],
+			[['value', 'yearlyValue'], 'number', 'message'=>'Please enter a value for {attribute}.'],
 			[['costbenefit_calculation_id', 'costbenefit_item_type_id'], 'integer']
 		];
 	}
@@ -55,6 +55,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 			'[monthly][communication]value' => Yii::t('CostBenefitItem', 'Monthly communication value'),
 			'[monthly][health]value' => Yii::t('CostBenefitItem', 'Monthly health value'),
 			'[monthly][otherExpenses]value' => Yii::t('CostBenefitItem', 'Monthly other expenses value'),
+			'[monthly][profit]value' => Yii::t('CostBenefitItem', 'Monthly profit'),
 			'[yearly][turnover]value' => Yii::t('CostBenefitItem', 'Yearly turnover value'),
 			'[yearly][expenses]value' => Yii::t('CostBenefitItem', 'Yearly expenses value'),
 			'[yearly][salaries]value' => Yii::t('CostBenefitItem', 'Yearly salaries value'),
@@ -64,6 +65,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 			'[yearly][communication]value' => Yii::t('CostBenefitItem', 'Yearly communication value'),
 			'[yearly][health]value' => Yii::t('CostBenefitItem', 'Yearly health value'),
 			'[yearly][otherExpenses]value' => Yii::t('CostBenefitItem', 'Yearly other expenses value'),
+			'[yearly][profit]value' => Yii::t('CostBenefitItem', 'Yearly profit'),
 			'yearlyValue' => Yii::t('CostBenefitItem', 'Yearly value'),
 			'costbenefit_calculation_id' => 'Costbenefit Calculation ID',
 			'costbenefit_item_type_id' => 'Costbenefit Item Type ID',
