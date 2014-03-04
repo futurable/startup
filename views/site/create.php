@@ -11,10 +11,10 @@ use yii\web\View;
 use yii\helpers\Json;
 $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 
-$IndustrySetupJSON = json_encode($industrySetupArray);
-$IndustrySetupJS = "var IndustrySetupArray = $IndustrySetupJSON;\n";
+$industrySetupJSON = json_encode($industrySetupArray);
+$industrySetupJS = "var IndustrySetupArray = $industrySetupJSON;\n";
 
-$this->registerJs($IndustrySetupJS);
+$this->registerJs($industrySetupJS, View::POS_HEAD);
 // TODO: fix this
 //$this->registerJs('js/costBenefitCalculation.js');
 ?>
