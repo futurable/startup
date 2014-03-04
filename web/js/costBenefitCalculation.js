@@ -126,7 +126,7 @@ $(document).ready(function(){
         var expenses = Math.round( (turnover * 0.8) );
         
         $("#costbenefititem-monthly-expenses-value").val(expenses);
-        $("#costbenefititem-monthly-expenses-value").val(expenses*12);
+        $("#costbenefititem-yearly-expenses-value").val(expenses*12);
     };
     
     updateLoans = function(){
