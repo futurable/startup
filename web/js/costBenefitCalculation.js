@@ -25,12 +25,12 @@ $(document).ready(function(){
     
     $("#company-industry_id,#company-employees").change(updateAllFields);
     
-    $("#CostbenefitItem_turnover_monthly,#CostbenefitItem_turnover_yearly").keyup(function(){
+    $("#costbenefititem-monthly-turnover-value,#costbenefititem-yearly-turnover-value").keyup(function(){
         updateExpenses();
         updateProfit();
     });
     
-    $("#CostbenefitItem_salaries_monthly,#CostbenefitItem_salaries_yearly").keyup(function(){
+    $("#costbenefititem-monthly-salaries-value,#costbenefititem-yearly-salaries-value").keyup(function(){
         updateSideExpenses();
     });
     
@@ -46,16 +46,12 @@ $(document).ready(function(){
      * @param {object} field
      */
     updateCalculationFields = function( field ){
-    	// Get the parent
-    	// TODO: this shoulb be done more spesific
-    	var parent = field.parent().parent();
-    	
-        var currentId = parent.attr('id');
+        var currentId = field.attr('id');
         if(currentId.indexOf("monthly") >= 0){
-        	updateYearlyField(parent);
+        	updateYearlyField(field);
         }
         else if(currentId.indexOf("yearly") >= 0){
-        	updateMonthlyField(parent);
+        	updateMonthlyField(field);
         }
     };
     
@@ -67,12 +63,12 @@ $(document).ready(function(){
      */
     updateMonthlyField = function( field ){
     	var currentId = field.attr('id');
-        var currentValue = $('#' + currentId + ' input').val();
+        var currentValue = $(field).val();
         
         var monthlyValue = Math.round(currentValue/12*100) / 100;
        
         var monthlyId = currentId.replace("yearly","monthly");
-        $('#' + monthlyId + ' input').val(monthlyValue);
+        $('#'+monthlyId).val(monthlyValue);
     };
     
      /**
