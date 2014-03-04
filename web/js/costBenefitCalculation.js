@@ -95,7 +95,7 @@ $(document).ready(function(){
         var salaries = avgWage*employees;
         $("#CostbenefitItem_salaries_monthly input").val(salaries);
         $("#CostbenefitItem_salaries_yearly input").val(salaries*12);
-    }
+    };
     
     updateSideExpenses = function(){
         var salaries = $("#CostbenefitItem_salaries_monthly input").val();
@@ -103,7 +103,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_sideExpenses_monthly input").val(expenses);
         $("#CostbenefitItem_sideExpenses_yearly input").val(expenses*12);
-    }
+    };
     
     updateTurnover = function(){
         var industryId =  $("#company-industry_id").val();
@@ -117,7 +117,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_turnover_monthly input").val(turnover);
         $("#CostbenefitItem_turnover_yearly input").val(turnover*12);
-    }
+    };
     
     updateExpenses = function(){
         var turnover = $("#CostbenefitItem_turnover_monthly input").val();
@@ -126,7 +126,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_expenses_monthly input").val(expenses);
         $("#CostbenefitItem_expenses_yearly input").val(expenses*12);
-    }
+    };
     
     updateLoans = function(){
         var expenses = parseInt($("#CostbenefitItem_expenses_monthly input").val());
@@ -144,7 +144,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_loans_monthly input").val(loans);
         $("#CostbenefitItem_loans_yearly input").val(loans*12);
-    }
+    };
     
     updateRents = function(){
         var industryId = $("#company-industry_id").val();
@@ -155,7 +155,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_rents_monthly input").val(rents);
         $("#CostbenefitItem_rents_yearly input").val(rents*12);       
-    }
+    };
     
     updateCommunication = function(){
         var industryId = $("#company-industry_id").val();
@@ -166,19 +166,19 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_communication_monthly input").val(communication);
         $("#CostbenefitItem_communication_yearly input").val(communication*12); 
-    }
+    };
     
     updateHealth = function(){
     	// TODO
         $("#CostbenefitItem_health_monthly input").val(0);
         $("#CostbenefitItem_health_yearly input").val(0);
-    }
+    };
     
     updateOtherExpenses = function(){
     	// TODO
         $("#CostbenefitItem_otherExpenses_monthly input").val(0);
         $("#CostbenefitItem_otherExpenses_yearly input").val(0);
-    }
+    };
     
     updateProfit = function(){
         var turnover = Number($("#CostbenefitItem_turnover_monthly input").val());
@@ -196,7 +196,7 @@ $(document).ready(function(){
         
         $("#CostbenefitItem_profit_monthly input").val(profit);
         $("#CostbenefitItem_profit_yearly input").val(profit*12);
-    }
+    };
     
     fillYearlyFields = function(){
         $("#costBenefitCalculation input").each(function() {
@@ -204,7 +204,7 @@ $(document).ready(function(){
                updateYearlyField($(this));
             }
         });
-    }
+    };
     
     updateProfit();
     fillYearlyFields();
