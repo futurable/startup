@@ -58,8 +58,8 @@ $this->registerJs($industrySetupJS, View::POS_HEAD);
 			<table id='costBenefitCalculationTable'>
 				<tr>
 					<th></th>
-					<th><?php echo Yii::t('Company', 'Monthly') ?> (&euro;)</th>
-				  	<th><?php echo Yii::t('Company', 'Yearly') ?> (&euro;)</th>
+					<th><?php echo Yii::t('Company', 'Monthly') ?></th>
+				  	<th><?php echo Yii::t('Company', 'Yearly') ?></th>
 					<th></th>
 				</tr>
 				<?php
