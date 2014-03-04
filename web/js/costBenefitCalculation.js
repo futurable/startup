@@ -129,12 +129,12 @@ $(document).ready(function(){
     }
     
     updateLoans = function(){
-        var expenses = parseInt($("#CostbenefitItem_expenses_value").val());
-        var salaries = parseInt($("#CostbenefitItem_salaries_value").val());
-        var sideExpenses = parseInt($("#CostbenefitItem_sideExpenses_value").val());
-        var rents = parseInt($("#CostbenefitItem_rents_value").val());
-        var communication = parseInt($("#CostbenefitItem_communication_value").val());
-        
+        var expenses = parseInt($("#CostbenefitItem_expenses_monthly input").val());
+        var salaries = parseInt($("#CostbenefitItem_salaries_monthly input").val());
+        var sideExpenses = parseInt($("#CostbenefitItem_sideExpenses_monthly input").val());
+        var rents = parseInt($("#CostbenefitItem_rents_monthly input").val());
+        var communication = parseInt($("#CostbenefitItem_communication_monthly input").val());
+        alert( expenses+" "+salaries+" "+sideExpenses+" "+rents+" "+communication);
         // Calculate loan sum. 3x all expenses + one months expenses
         loanSum = (expenses+salaries+sideExpenses+rents+communication)*3 + expenses;
         var interest = 3.3 / 100 / 12;
@@ -142,8 +142,8 @@ $(document).ready(function(){
         
         loans = Math.round(payment);
         
-        $("#CostbenefitItem_loans_value").val(loans);
-        $("#_loansyearly").val(loans*12);
+        $("#CostbenefitItem_loans_monthly input").val(loans);
+        $("#CostbenefitItem_loans_yearly input").val(loans*12);
     }
     
     updateRents = function(){
