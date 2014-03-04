@@ -19,7 +19,7 @@ $(document).ready(function(){
         updateExpenses();
         updateLoans();
         updateHealth();
-        updateOther();
+        updateOtherExpenses();
         updateProfit();
     };
     
@@ -174,7 +174,7 @@ $(document).ready(function(){
         $("#CostbenefitItem_health_yearly input").val(0);
     }
     
-    updateOther = function(){
+    updateOtherExpenses = function(){
     	// TODO
         $("#CostbenefitItem_otherExpenses_monthly input").val(0);
         $("#CostbenefitItem_otherExpenses_yearly input").val(0);
