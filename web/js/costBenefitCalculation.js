@@ -121,12 +121,12 @@ $(document).ready(function(){
     };
     
     updateExpenses = function(){
-        var turnover = $("#CostbenefitItem_turnover_monthly input").val();
+        var turnover = $("#costbenefititem-monthly-turnover-value").val();
 
         var expenses = Math.round( (turnover * 0.8) );
         
-        $("#CostbenefitItem_expenses_monthly input").val(expenses);
-        $("#CostbenefitItem_expenses_yearly input").val(expenses*12);
+        $("#costbenefititem-monthly-expenses-value").val(expenses);
+        $("#costbenefititem-monthly-expenses-value").val(expenses*12);
     };
     
     updateLoans = function(){
