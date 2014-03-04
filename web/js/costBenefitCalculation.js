@@ -94,8 +94,8 @@ $(document).ready(function(){
         var avgWage = industrySetup['avgWage'];
         
         var salaries = avgWage*employees;
-        $("#CostbenefitItem_salaries_monthly input").val(salaries);
-        $("#CostbenefitItem_salaries_yearly input").val(salaries*12);
+        $("#costbenefititem-monthly-salaries-value").val(salaries);
+        $("#costbenefititem-monthly-salaries-value").val(salaries*12);
     };
     
     updateSideExpenses = function(){
