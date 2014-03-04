@@ -17,12 +17,14 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Invalid token key.' => 'Virheellinen perustamisavain',
+  'Token key is already used on {dateTime}.' => 'Perustamisavain käytetty {dateTime}',
   'Create date' => 'Luontipäivä',
   'Expiration date' => 'Erääntymispäivä',
+  'ID' => 'ID',
+  'Lifetime' => 'Kesto',
   'Reclaim date' => 'Käyttöönottopäivä',
   'Token customer' => 'Avaimen asiakas',
   'Token key' => 'Perustamisavain',
   'Token setup' => 'Avaimen asetukset',
-  'ID' => 'ID',
-  'Lifetime' => 'Kesto',
 );
