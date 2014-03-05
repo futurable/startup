@@ -25,12 +25,12 @@ $(document).ready(function(){
     
     $("#company-industry_id,#company-employees").change(updateAllFields);
     
-    $("#costbenefititem-turnover-monthly-value,#costbenefititem-turnover-yearly-value").keyup(function(){
+    $("#costbenefititem-monthly-turnover-value,#costbenefititem-yearly-turnover-value").keyup(function(){
         updateExpenses();
         updateProfit();
     });
     
-    $("#costbenefititem-salaries-monthly-value,#costbenefititem-salaries-yearly-value").keyup(function(){
+    $("#costbenefititem-monthly-salaries-value,#costbenefititem-yearly-salaries-value").keyup(function(){
         updateSideExpenses();
     });
     
@@ -94,16 +94,16 @@ $(document).ready(function(){
         var avgWage = industrySetup['avgWage'];
         
         var salaries = avgWage*employees;
-        $("#costbenefititem-salaries-monthly-value").val(salaries);
-        $("#costbenefititem-salaries-yearly-value").val(salaries*12);
+        $("#costbenefititem-monthly-salaries-value").val(salaries);
+        $("#costbenefititem-yearly-salaries-value").val(salaries*12);
     };
     
     updateSideExpenses = function(){
         var salaries = $("#costbenefititem-monthly-salaries-value").val();
         var expenses = Math.round( salaries * 0.3 );
         
-        $("#costbenefititem-sideexpenses-monthly-value").val(expenses);
-        $("#costbenefititem-sideexpenses-yearly-value").val(expenses*12);
+        $("#costbenefititem-monthly-sideexpenses-value").val(expenses);
+        $("#costbenefititem-yearly-sideexpenses-value").val(expenses*12);
     };
     
     updateTurnover = function(){
@@ -116,25 +116,25 @@ $(document).ready(function(){
         
         var turnover = parseInt(industrySetup['turnover']) + parseInt(salaries);
         
-        $("#costbenefititem-turnover-monthly-value").val(turnover);
-        $("#costbenefititem-turnover-yearly-value").val(turnover*12);
+        $("#costbenefititem-monthly-turnover-value").val(turnover);
+        $("#costbenefititem-yearly-turnover-value").val(turnover*12);
     };
     
     updateExpenses = function(){
-        var turnover = $("#costbenefititem-turnover-monthly-value").val();
+        var turnover = $("#costbenefititem-monthly-turnover-value").val();
 
         var expenses = Math.round( (turnover * 0.8) );
         
-        $("#costbenefititem-expenses-monthly-value").val(expenses);
-        $("#costbenefititem-expenses-yearly-value").val(expenses*12);
+        $("#costbenefititem-monthly-expenses-value").val(expenses);
+        $("#costbenefititem-yearly-expenses-value").val(expenses*12);
     };
     
     updateLoans = function(){
-        var expenses = parseInt($("#costbenefititem-expenses-monthly-value").val());
-        var salaries = parseInt($("#costbenefititem-salaries-monthly-value").val());
-        var sideExpenses = parseInt($("#costbenefititem-sideexpenses-monthly-value").val());
-        var rents = parseInt($("#costbenefititem-rents-monthly-value").val());
-        var communication = parseInt($("#costbenefititem-communication-monthly-value").val());
+        var expenses = parseInt($("#costbenefititem-monthly-expenses-value").val());
+        var salaries = parseInt($("#costbenefititem-monthly-salaries-value").val());
+        var sideExpenses = parseInt($("#costbenefititem-monthly-sideexpenses-value").val());
+        var rents = parseInt($("#costbenefititem-monthly-rents-value").val());
+        var communication = parseInt($("#costbenefititem-monthly-communication-value").val());
 
         // Calculate loan sum. 3x all expenses + one months expenses
         loanSum = (expenses+salaries+sideExpenses+rents+communication)*3 + expenses;
@@ -143,8 +143,8 @@ $(document).ready(function(){
         
         loans = Math.round(payment);
         
-        $("#costbenefititem-loans-monthly-value").val(loans);
-        $("#costbenefititem-loans-yearly-value").val(loans*12);
+        $("#costbenefititem-monthly-loans-value").val(loans);
+        $("#costbenefititem-yearly-loans-value").val(loans*12);
     };
     
     updateRents = function(){
@@ -154,8 +154,8 @@ $(document).ready(function(){
         
         var rents = parseInt(industrySetup['rents']) * (1+Math.floor((parseInt(employees)/5)));
         
-        $("#costbenefititem-rents-monthly-value").val(rents);
-        $("#costbenefititem-rents-yearly-value").val(rents*12);       
+        $("#costbenefititem-monthly-rents-value").val(rents);
+        $("#costbenefititem-yearly-rents-value").val(rents*12);       
     };
     
     updateCommunication = function(){
@@ -165,37 +165,37 @@ $(document).ready(function(){
         
         var communication = Math.round(parseInt(industrySetup['communication'])*(1+(parseInt(employees)-1)*0.2));
         
-        $("#costbenefititem-communication-monthly-value").val(communication);
-        $("#costbenefititem-communication-yearly-value").val(communication*12); 
+        $("#costbenefititem-monthly-communication-value").val(communication);
+        $("#costbenefititem-yearly-communication-value").val(communication*12); 
     };
     
     updateHealth = function(){
     	// TODO
-        $("#costbenefititem-health-monthly-value").val(0);
-        $("#costbenefititem-health-yearly-value").val(0);
+        $("#costbenefititem-monthly-health-value").val(0);
+        $("#costbenefititem-yearly-health-value").val(0);
     };
     
     updateOtherExpenses = function(){
     	// TODO
-        $("#costbenefititem-otherexpenses-monthly-value").val(0);
-        $("#costbenefititem-otherexpenses-yearly-value").val(0);
+        $("#costbenefititem-monthly-otherexpenses-value").val(0);
+        $("#costbenefititem-yearly-otherexpenses-value").val(0);
     };
     
     updateProfit = function(){
-        var turnover = Number($("#costbenefititem-turnover-monthly-value").val());
-        var expenses = Number($("#costbenefititem-expenses-monthly-value").val());
-        var salaries = Number($("#costbenefititem-salaries-monthly-value").val());
-        var side = Number($("#costbenefititem-sideexpenses-monthly-value").val());
-        var loans = Number($("#costbenefititem-loans-monthly-value").val());
-        var rents = Number($("#costbenefititem-rents-monthly-value").val());
-        var communication = Number($("#costbenefititem-communication-monthly-value").val());
-        var health = Number($("#costbenefititem-health-monthly-value").val());
-        var other = Number($("#costbenefititem-otherexpenses-monthly-value").val());
+        var turnover = Number($("#costbenefititem-monthly-turnover-value").val());
+        var expenses = Number($("#costbenefititem-monthly-expenses-value").val());
+        var salaries = Number($("#costbenefititem-monthly-salaries-value").val());
+        var side = Number($("#costbenefititem-monthly-sideexpenses-value").val());
+        var loans = Number($("#costbenefititem-monthly-loans-value").val());
+        var rents = Number($("#costbenefititem-monthly-rents-value").val());
+        var communication = Number($("#costbenefititem-monthly-communication-value").val());
+        var health = Number($("#costbenefititem-monthly-health-value").val());
+        var other = Number($("#costbenefititem-monthly-otherexpenses-value").val());
 
         var profit = Math.round(turnover-expenses-salaries-side-loans-rents-communication-health-other);
         
-        $("#costbenefititem-profit-monthly-value").val(profit);
-        $("#costbenefititem-profit-yearly-value").val(profit*12);
+        $("#costbenefititem-monthly-profit-value").val(profit);
+        $("#costbenefititem-yearly-profit-value").val(profit*12);
     };
     
     fillYearlyFields = function(){
