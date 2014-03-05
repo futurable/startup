@@ -99,7 +99,7 @@ $(document).ready(function(){
     };
     
     updateSideExpenses = function(){
-        var salaries = $("#costbenefititem-monthly-salaries-value").val();
+        var salaries = $("#costbenefititem-salaries-monthly-value").val();
         var expenses = Math.round( salaries * 0.3 );
         
         $("#costbenefititem-sideexpenses-monthly-value").val(expenses);
