@@ -34,9 +34,12 @@ $this->registerJs($industrySetupJS, View::POS_HEAD);
 		
 		<div class="form-group" id='company-info'>
 			<h2><?php echo Yii::t('Company', 'Info'); ?></h2>
+			<?php echo Html::activeHiddenInput($tokenKey, 'token_key'); ?>
 			
+			<label for='company-name'><?php echo Yii::t('Company', 'Name'); ?></label><br/>
 			<?php echo $form->field($company, 'name', ['options'=>['title'=>Yii::t('Company', 'The company name. Be creative and stand out!')]]); ?>
 			
+			<label for='company-email'><?php echo Yii::t('Company', 'Email'); ?></label><br/>
 			<?php echo $form->field($company, 'email', ['options'=>['title'=>Yii::t('Company', 'The company email. You will receive the account information here.')]]); ?>
 			
 			<label for='company-industry_id'><?php echo Yii::t('Company', 'Industry'); ?></label><br/>
