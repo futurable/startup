@@ -10,7 +10,7 @@ h1{
 	margin-bottom: 40px;
 }
 h2{
-	text-align: left;
+	font-weight: bold;
 }
 .disclaimer {
 	margin: 0 auto;
@@ -143,4 +143,10 @@ a.desc:after {
 }
 #company-info{
 	padding-right: 40px;
+}
+.company-view{
+	padding: 40px;
+}
+.company-view td, .company-view th{
+	padding: 5px 10px;
 }
