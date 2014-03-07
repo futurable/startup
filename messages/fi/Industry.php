@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'SellFullComputerPackages' => 'Tietokonepakettien suunnittelua oheislaitteineen.',
-  'SellComputerCases' => 'Tietokoneiden kokoamista valmiista komponenenteista.',
+  'SellFullComputerPackages' => 'Oheislaitteet sisältävien tietokonepakettien suunnittelu ja jälleenmyynti.',
+  'SellComputerCases' => 'Tietokoneiden kokoaminen valmiista komponenenteista.',
   'computer-assembly' => 'Tietokoneiden kokoonpano',
   'computer-retail' => 'Tietokoneiden jälleenmyynti',
 );

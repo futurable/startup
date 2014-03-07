@@ -78,5 +78,6 @@ return array (
   'Validate' => 'Tarkista',
   'Welcome' => 'Tervetuloa',
   'Yearly' => 'Vuodessa',
-  'What should you do next?' => 'Mitä kannattaa tehdä seuraaksi?'
+  'What should you do next?' => 'Mitä kannattaa tehdä seuraaksi?',
+  'Your company has been created!' => 'Yrityksesi on luotu!'
 );
