@@ -5,6 +5,7 @@ use Yii;
 use Symfony\Component\Finder\Expression\Expression;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use app\commands\CreateCompanyTag;
 
 /**
  * This is the model class for table "company".
@@ -47,25 +48,49 @@ class Company extends ActiveRecord
 		return [
 			[['name', 'tag', 'business_id', 'email', 'employees', 'token_key_id', 'industry_id'], 'required'],
 			[['email'], 'email'],
+			[['name'], 'validateTag'],
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
-			[['tag'	], 'string', 'max' => 32],
-			[['business_id'], 'string', 'max' => 9],
-			[['create_date'],'default', 'value'=>new Expression('NOW()'),'on'=>'insert']
-			
+			[['tag'], 'string', 'max' => 32],
+			[['business_id'], 'string', 'max' => 9]
 		];
 	}
 
+	public function validateTag($attribute, $params)
+	{
+		// Create the tag
+		$customer = $this->tokenKey->tokenCustomer;
+		$tagCreator = new CreateCompanyTag();
+		$tag = $tagCreator->run($this->name, $customer->tag);
+		
+		// See if the tag is already used
+		$record = Company::find()
+		->select('tag')
+		->where('tag=:tag')
+		->addParams(['tag'=>$tag])
+		->one();
+		
+		if($record){	 
+			$this->addError($attribute, 
+					Yii::t('Company', 'This company name is already taken.'). " " . Yii::t('Company', 'Please select another one'));
+			$return = false;
+		} else {
+			$return = true;
+		}
+		
+		return $record;
+	}
+	
 	public function behaviors()
 	{
 		return [
-			'timestamp' => array(
+			'timestamp' => [
 				'class' => TimestampBehavior::className(),
-				'attributes' => array(
+				'attributes' => [
 					ActiveRecord::EVENT_BEFORE_INSERT => 'create_time',
-				),
-			),
+				],
+			],
 		];
 	}
 	
