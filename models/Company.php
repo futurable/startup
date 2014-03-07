@@ -2,6 +2,9 @@
 
 namespace app\models;
 use Yii;
+use Symfony\Component\Finder\Expression\Expression;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "company".
@@ -24,7 +27,7 @@ use Yii;
  * @property Remark $remark
  * @property Salary[] $salaries
  */
-class Company extends \yii\db\ActiveRecord
+class Company extends ActiveRecord
 {
 	public $profit;
 	
@@ -42,16 +45,30 @@ class Company extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['name', 'tag', 'business_id', 'email', 'employees', 'create_time', 'token_key_id', 'industry_id'], 'required'],
+			[['name', 'tag', 'business_id', 'email', 'employees', 'token_key_id', 'industry_id'], 'required'],
 			[['email'], 'email'],
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
-			[['tag'], 'string', 'max' => 32],
-			[['business_id'], 'string', 'max' => 9]
+			[['tag'	], 'string', 'max' => 32],
+			[['business_id'], 'string', 'max' => 9],
+			[['create_date'],'default', 'value'=>new Expression('NOW()'),'on'=>'insert']
+			
 		];
 	}
 
+	public function behaviors()
+	{
+		return [
+			'timestamp' => array(
+				'class' => TimestampBehavior::className(),
+				'attributes' => array(
+					ActiveRecord::EVENT_BEFORE_INSERT => 'create_time',
+				),
+			),
+		];
+	}
+	
 	/**
 	 * @inheritdoc
 	 */
