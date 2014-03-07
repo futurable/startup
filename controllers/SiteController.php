@@ -212,11 +212,9 @@ class SiteController extends Controller
 		
 			# Save the company
 			$company = $models['company'];
-			$company->validate();
 			
 			// Get token key id
 			$tokenKey = $models['tokenKey'];
-			$tokenKey->validate();
 			
 			$tokenKey = TokenKey::find()
 				->select('id, token_customer_id')
@@ -241,18 +239,36 @@ class SiteController extends Controller
 			$BIDCreator = new CreateBusinessID();
 			$company->business_id = $BIDCreator->run();
 			
-			// Validate models
-			$modelsValidated  = false;
-			if($company->validate()) $modelsValidated = true;
+			// TODO: fix this
+			$company->create_time = date('Y-m-d H:i:s');
+			if(!$company->save()) $modelsSaved[] = 'company';
 			
-			// Save models
-			$modelsSaved = false;
-			if($modelsValidated){
-				$modelsSaved = $company->save();
+			// Create the cost-benefit calculation
+			$CostbenefitCalculation = $models['costBenefitCalculation'];
+			$CostbenefitCalculation->company_id = $company->id;
+			if(!$CostbenefitCalculation->save()) $modelsSaved[] = 'CostbenefitCalculation';
+			
+			// Create the cost-benefit calculation items
+			foreach($_POST['CostbenefitItem']['monthly'] as $key => $item){
+				// Fetch the id
+				$record = CostbenefitItemType::find()
+				->select('id')
+				->where('name=:name')
+				->addParams([':name'=>$key])
+				->one();
+				
+				if(!$record) continue;
+				
+				$CostbenefitItem = new CostbenefitItem();
+				$CostbenefitItem->costbenefit_item_type_id = $record->id;
+				$CostbenefitItem->costbenefit_calculation_id = $CostbenefitCalculation->id;
+				$CostbenefitItem->value= $item['value'];
+				
+				if(!$CostbenefitItem->save()) $modelsSaved[] = "CostbenefitItem[{$key}]";
 			}
-		
-		if($modelsSaved){
-			$transaction->commit();
+			
+		if(empty($modelsSaved)){
+			$transaction->commit(); 
 			$success = true;
 		} else {
 			$transaction->rollBack();
