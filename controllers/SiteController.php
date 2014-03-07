@@ -54,7 +54,7 @@ class SiteController extends Controller
 			$record = $this->getReclaimedTokenKey($tokenKey);
 			
 			# Check if the token key is valid
-			if($this->validateTokenKey($tokenKey->token_key) === true){
+			if($this->validateTokenKey($tokenKey) === true){
 				$models = $this->getCreateCompanyModels();
 				
 				if($models['company']['attributes']['name']){
@@ -96,13 +96,23 @@ class SiteController extends Controller
 		}
 	}
 	
+	private function getTokenKeyIdFromTokenKey($tokenKey){
+		$record = TokenKey::find()
+		->select(['id'])
+		->where('token_key=:token_key')
+		->addParams([':token_key' => $tokenKey->token_key])
+		->one();
+		
+		return $record->id;
+	}
+	
 	private function validateTokenKey($tokenKey){
 		$isValid = false;
 		
 		$record = TokenKey::find()
-			->select(['token_key', 'reclaim_date'])
+			->select(['token_key'])
 			->where(['and', 'token_key=:token_key', 'reclaim_date IS NULL' ])
-			->addParams([':token_key' => $tokenKey])
+			->addParams([':token_key' => $tokenKey->token_key])
 			->one();
 		
 		if(!$record) $isValid = false;
@@ -114,7 +124,7 @@ class SiteController extends Controller
 	private function getReclaimedTokenKey($tokenKey){
 		$record = TokenKey::find()
 		->select(['reclaim_date'])
-		->where(['and', 'token_key=:token_key'])
+		->where('token_key=:token_key')
 		->addParams([':token_key' => $tokenKey->token_key])
 		->one();
 	
@@ -124,9 +134,11 @@ class SiteController extends Controller
 	private function getCreateCompanyModels(){
 		$tokenKey = new TokenKey();
 		$tokenKey->load($_POST);
+		$tokenKey->id = $this->getTokenKeyIdFromTokenKey($tokenKey);
 		
 		$company = new Company();
 		$company->load($_POST);
+		$company->token_key_id = $tokenKey->id;
 		
 		$industry = new Industry();
 		$industry->load($_POST);
@@ -193,18 +205,18 @@ class SiteController extends Controller
 		return $industrySetupArray;
 	}
 	
-	private function saveModels(){
+	private function saveModels($models){
 		$success = false;
 		
 		$transaction = Yii::$app->db->beginTransaction();
 		
 			# Save the company
-			$company = new Company();
-			$company->load($_POST);
+			$company = $models['company'];
+			$company->validate();
 			
 			// Get token key id
-			$tokenKey = new TokenKey();
-			$tokenKey->load($_POST);
+			$tokenKey = $models['tokenKey'];
+			$tokenKey->validate();
 			
 			$tokenKey = TokenKey::find()
 				->select('id, token_customer_id')
