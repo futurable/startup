@@ -324,12 +324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "8b8a40cbbf1904926f38688d62e1c3a46d5f1528"
+                "reference": "0c920688fb5a11200a2e1ace0cf13a74c4455d70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/8b8a40cbbf1904926f38688d62e1c3a46d5f1528",
-                "reference": "8b8a40cbbf1904926f38688d62e1c3a46d5f1528",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/0c920688fb5a11200a2e1ace0cf13a74c4455d70",
+                "reference": "0c920688fb5a11200a2e1ace0cf13a74c4455d70",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +342,7 @@
             ],
             "description": "pushState + ajax = pjax, a forked maintainted by the Yii Framework core developers",
             "homepage": "https://github.com/yiisoft/jquery-pjax#readme",
-            "time": "2014-03-05 03:54:20"
+            "time": "2014-03-06 21:38:22"
         },
         {
             "name": "yiisoft/yii2",
@@ -350,12 +350,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2695890ec6c12f6bb622a575547249a7812bd8fb"
+                "reference": "92c5fcf5dceb4d32fe13624f446db6d01b94517f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2695890ec6c12f6bb622a575547249a7812bd8fb",
-                "reference": "2695890ec6c12f6bb622a575547249a7812bd8fb",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/92c5fcf5dceb4d32fe13624f446db6d01b94517f",
+                "reference": "92c5fcf5dceb4d32fe13624f446db6d01b94517f",
                 "shasum": ""
             },
             "require": {
@@ -420,7 +420,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-03-05 23:22:29"
+            "time": "2014-03-07 02:18:28"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -608,12 +608,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "af552c32e2f617b2c956c52473c56f795b35f146"
+                "reference": "23d5bf8e5976ac43a8b17450369023a30dcefafa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/af552c32e2f617b2c956c52473c56f795b35f146",
-                "reference": "af552c32e2f617b2c956c52473c56f795b35f146",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/23d5bf8e5976ac43a8b17450369023a30dcefafa",
+                "reference": "23d5bf8e5976ac43a8b17450369023a30dcefafa",
                 "shasum": ""
             },
             "require": {
@@ -628,6 +628,7 @@
                 "symfony/yaml": "~2.3"
             },
             "require-dev": {
+                "codeception/specify": "*",
                 "facebook/php-sdk": "3.*",
                 "videlalvaro/php-amqplib": "*"
             },
@@ -663,7 +664,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2014-02-27 20:48:28"
+            "time": "2014-03-07 03:54:31"
         },
         {
             "name": "codeception/specify",
@@ -2106,12 +2107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "6afed9a89d978ff7e59b9388af572194c152a37d"
+                "reference": "980be9be00c3e2a6dbaff92e332e95f603507afa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/6afed9a89d978ff7e59b9388af572194c152a37d",
-                "reference": "6afed9a89d978ff7e59b9388af572194c152a37d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/980be9be00c3e2a6dbaff92e332e95f603507afa",
+                "reference": "980be9be00c3e2a6dbaff92e332e95f603507afa",
                 "shasum": ""
             },
             "require": {
@@ -2143,7 +2144,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2014-03-05 16:45:37"
+            "time": "2014-03-06 22:03:23"
         }
     ],
     "aliases": [
