@@ -18,6 +18,7 @@ use app\commands\CBCTableRow;
 use app\commands\TrimNonAlphaNumeric;
 use cebe\markdown\Markdown;
 use app\commands\CreateBusinessID;
+use app\commands\CreateCompanyTag;
 
 class SiteController extends Controller
 {
@@ -62,6 +63,7 @@ class SiteController extends Controller
 					}
 					else {
 						$tokenKey->addError('token_key', Yii::t("TokenKey", "Error while saving the company. Please report this incident to helpdesk@futurality.fi"));
+						$action = 'create';
 					}
 				} else {
 					$action = 'create';
@@ -219,19 +221,25 @@ class SiteController extends Controller
 				->addParams([':token_customer_id'=>$tokenKey->token_customer_id])
 				->one();
 			
-			$customer_tag = $tokenCustomer->tag;
-			
 			// Create a safe company tag
-			$Trimmer = new TrimNonAlphaNumeric();
-			$company->tag = $customer_tag."_".$Trimmer->run($company->name);
+			$TagCreator = new CreateCompanyTag();
+			$company->tag = $TagCreator->run($company->name, $tokenCustomer->tag);
 			
 			// Create business ID
 			$BIDCreator = new CreateBusinessID();
 			$company->business_id = $BIDCreator->run();
 			
-			$saved = $company->save();
+			// Validate models
+			$modelsValidated  = false;
+			if($company->validate()) $modelsValidated = true;
+			
+			// Save models
+			$modelsSaved = false;
+			if($modelsValidated){
+				$modelsSaved = $company->save();
+			}
 		
-		if($saved){
+		if($modelsSaved){
 			$transaction->commit();
 			$success = true;
 		} else {
