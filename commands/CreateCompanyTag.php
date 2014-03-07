@@ -9,8 +9,10 @@ namespace app\commands;
 
 class CreateCompanyTag extends TrimNonAlphaNumeric{
 	public function run($company, $customer){
-		$company = TrimNonAlphaNumeric($company);
-		$customer = TrimNonAlphaNumeric($customer);
+		$Trimmer = new TrimNonAlphaNumeric();
+		
+		$company = $Trimmer->run($company);
+		$customer = $Trimmer->run($customer);
 		
 		$tag = "{$customer}_{$company}";
 	
