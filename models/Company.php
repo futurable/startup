@@ -53,7 +53,7 @@ class Company extends ActiveRecord
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
 			[['tag'], 'string', 'max' => 32],
-			[['business_id'], 'string', 'max' => 9]
+			[['business_id'], 'string', 'max' => 9],
 		];
 	}
 
@@ -80,18 +80,6 @@ class Company extends ActiveRecord
 		}
 		
 		return $record;
-	}
-	
-	public function behaviors()
-	{
-		return [
-			'timestamp' => [
-				'class' => TimestampBehavior::className(),
-				'attributes' => [
-					ActiveRecord::EVENT_BEFORE_INSERT => 'create_time',
-				],
-			],
-		];
 	}
 	
 	/**
