@@ -2,12 +2,10 @@
 namespace app\commands;
 
 use Yii;
-use yii\console\Controller;
 use yii\widgets\ActiveField;
 use app\models\CostbenefitItem;
 
-class CBCTableRow extends Controller
-{
+class CBCTableRow{
     public function getRow($form, $object)
     {
     	$item = new CostbenefitItem();
