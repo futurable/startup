@@ -85,8 +85,7 @@ class SiteController extends Controller
 		if($action == 'create'){
 			return $this->render('create', $models);
 		}
-		
-		# Company has been sent
+		# Company has been saved
 		if($action == 'save'){
 			return $this->render('view', $models);
 		}
