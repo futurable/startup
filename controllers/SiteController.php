@@ -11,6 +11,13 @@ use app\models\CostbenefitItem;
 use app\models\CostbenefitItemType;
 use app\models\Industry;
 use app\models\IndustrySetup;
+use app\models\TokenCustomer;
+use Symfony\Component\Console\Helper\Helper;
+use futural;
+use app\commands\CBCTableRow;
+use app\commands\TrimNonAlphaNumeric;
+use cebe\markdown\Markdown;
+use app\commands\CreateBusinessID;
 
 class SiteController extends Controller
 {
@@ -50,7 +57,12 @@ class SiteController extends Controller
 				$models = $this->getCreateCompanyModels();
 				
 				if($models['company']['attributes']['name']){
-					$action = 'save';
+					if($this->saveModels($models) === true){
+						$action = 'save';
+					}
+					else {
+						$tokenKey->addError('token_key', Yii::t("TokenKey", "Error while saving the company. Please report this incident to helpdesk@futurality.fi"));
+					}
 				} else {
 					$action = 'create';
 				}
@@ -74,13 +86,7 @@ class SiteController extends Controller
 		
 		# Company has been sent
 		if($action == 'save'){
-			if($this->saveModels() === true){
-				return $this->render('view', $models);
-			}
-			else {
-				$tokenKey->addError('token_key', Yii::t("TokenKey", "Error while saving the company. Please report this incident to helpdesk@futurality.fi"));
-				$action = 'index';
-			}
+			return $this->render('view', $models);
 		}
 		# Token key has not been sent
 		if($action == 'index'){
@@ -187,6 +193,50 @@ class SiteController extends Controller
 	
 	private function saveModels(){
 		$success = false;
+		
+		$transaction = Yii::$app->db->beginTransaction();
+		
+			# Save the company
+			$company = new Company();
+			$company->load($_POST);
+			
+			// Get token key id
+			$tokenKey = new TokenKey();
+			$tokenKey->load($_POST);
+			
+			$tokenKey = TokenKey::find()
+				->select('id, token_customer_id')
+				->where('token_key=:token_key')
+				->addParams([':token_key' => $tokenKey->token_key])
+				->one();
+
+			$company->token_key_id = $tokenKey->id;
+
+			// Get token customer tag
+			$tokenCustomer = TokenCustomer::find()
+				->select('tag')
+				->where('id=:token_customer_id')
+				->addParams([':token_customer_id'=>$tokenKey->token_customer_id])
+				->one();
+			
+			$customer_tag = $tokenCustomer->tag;
+			
+			// Create a safe company tag
+			$Trimmer = new TrimNonAlphaNumeric();
+			$company->tag = $customer_tag."_".$Trimmer->run($company->name);
+			
+			// Create business ID
+			$BIDCreator = new CreateBusinessID();
+			$company->business_id = $BIDCreator->run();
+			
+			$saved = $company->save();
+		
+		if($saved){
+			$transaction->commit();
+			$success = true;
+		} else {
+			$transaction->rollBack();
+		}
 		
 		return $success;
 	}
