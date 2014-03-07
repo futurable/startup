@@ -8,20 +8,27 @@ use app\models\CostbenefitItem;
 class CBCTableRow{
     public function getRow($form, $object)
     {
-    	$item = new CostbenefitItem();
+    	$monthlyItem = new CostbenefitItem();
+    	$yearlyItem = new CostbenefitItem();
     	
     	$name = $object->name;
     	$label = ucfirst( Yii::t('CostBenefitItem', $name) );
     	$monthlyId = 'CostbenefitItem_'.$object->name."_monthly";
     	$yearlyId = 'CostbenefitItem_'.$object->name."_yearly";
     	
+    	// Get the values
+    	$monthlyItem->value = $_POST['CostbenefitItem']['monthly'][$name]['value'];
+    	$yearlyItem->value = $_POST['CostbenefitItem']['yearly'][$name]['value'];
+    	
     	$tooltip = Yii::t('CostBenefitItem', 'Tooltip'.ucfirst($name));
     	
-    	$monthlyValue = $form->field($item, "[monthly][{$name}]value", [
+    	$monthlyValue = $form->field($monthlyItem, "[monthly][{$name}]value", [
 			'options'=>['title' => $tooltip, 'id' => $monthlyId]
 			, 'addon' => ['append' => ['content'=>'&euro;']]
 		]);
-    	$yearlyValue = $form->field($item, "[yearly][{$name}]value", [
+    	
+    	
+    	$yearlyValue = $form->field($yearlyItem, "[yearly][{$name}]value", [
 			'options'=> ['title' => $tooltip, 'id' => $yearlyId]
 			, 'addon' => ['append' => ['content'=>'&euro;']]
 		]);
