@@ -27,13 +27,14 @@ class CreateBusinessID{
             $businessID =  Company::find()
             	->select('business_id')
             	->orderBy('id DESC')
-            	->one()
-            	->business_id;
+            	->one();
 
-            if($businessID == null){
+            if(!$businessID){
                 // DB is empty, create a random first business id
                 $businessID = $businessID = "9050".(rand(200,300));    
-            };
+            } else {
+            	$businessID = $businessID->business_id;
+            }
             $prefix = substr($businessID, 0, 7) + 1;
         }
         
