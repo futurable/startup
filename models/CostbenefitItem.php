@@ -32,7 +32,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['value', 'yearlyValue', 'costbenefit_calculation_id', 'costbenefit_item_type_id'], 'required'],
+			[['value', 'costbenefit_calculation_id', 'costbenefit_item_type_id'], 'required'],
 			[['value', 'yearlyValue'], 'number', 'message'=>'Please enter a value for {attribute}.'],
 			[['costbenefit_calculation_id', 'costbenefit_item_type_id'], 'integer']
 		];
