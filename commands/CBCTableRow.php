@@ -17,8 +17,10 @@ class CBCTableRow{
     	$yearlyId = 'CostbenefitItem_'.$object->name."_yearly";
     	
     	// Get the values
-    	$monthlyItem->value = $_POST['CostbenefitItem']['monthly'][$name]['value'];
-    	$yearlyItem->value = $_POST['CostbenefitItem']['yearly'][$name]['value'];
+    	if(isset($_POST['CostbenefitItem'])){
+	    	$monthlyItem->value = $_POST['CostbenefitItem']['monthly'][$name]['value'];
+	    	$yearlyItem->value = $_POST['CostbenefitItem']['yearly'][$name]['value'];
+    	}
     	
     	$tooltip = Yii::t('CostBenefitItem', 'Tooltip'.ucfirst($name));
     	
@@ -26,7 +28,7 @@ class CBCTableRow{
 			'options'=>['title' => $tooltip, 'id' => $monthlyId]
 			, 'addon' => ['append' => ['content'=>'&euro;']]
 		]);
-    	
+
     	
     	$yearlyValue = $form->field($yearlyItem, "[yearly][{$name}]value", [
 			'options'=> ['title' => $tooltip, 'id' => $yearlyId]
