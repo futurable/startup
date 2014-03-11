@@ -11,20 +11,31 @@ $this->title = 'Futural startup';
 	<?php if(isset($_GET['created'])) echo "<h1>".Yii::t('Company', 'Your company has been created!')."</h1>"; ?>
 
 	<h2><?php echo $company->name; ?></h2>
-	<h3><?php echo $company->business_id; ?></h3>
 
+	<h3><?php echo Yii::t('Company', 'Info'); ?></h3>
 	<table>
 	    <tr>
-	        <th><?php echo Yii::t('Company', 'Industry'); ?></th>
-	        <th><?php echo Yii::t('Company', 'Description'); ?></th>
+	        <th><?php echo Yii::t('Company', 'Business ID'); ?></th>
+	        <td><?php echo $company->business_id; ?> </td>
+	    </tr>
+    	    <tr>
+	        <th><?php echo Yii::t('Company', 'Employees'); ?></th>
+	        <td><?php echo $company->employees; ?> </td>
 	    </tr>
 	    <tr>
+	        <th><?php echo Yii::t('Company', 'Industry'); ?></th>
 	        <td><?php echo Yii::t('Industry', $company->industry->name); ?></td>
+	    </tr>
+	    <tr>
+	        <th><?php echo Yii::t('Company', 'Description'); ?></th>
 	        <td><?php echo Yii::t('Industry', $company->industry->description); ?></td>
+	    </tr>
+	    <tr>
+ 
 	    </tr>
 	</table>
 
-	<h2><?php Yii::t('Company', 'CostBenefitCalculation'); ?></h2>
+	<h3><?php echo Yii::t('Company', 'CostBenefitCalculation'); ?></h3>
 	<table>
 		<tr>
 			<th></th>
