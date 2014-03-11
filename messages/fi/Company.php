@@ -20,7 +20,7 @@ return array (
   'BankAccount' => '@@Pankkitunnukset@@',
   'Communication' => 'Yhteydet',
   'Company' => 'Yritys',
-  'CostBenefitCalculation' => '@@Liiketoimintasuunnitelma@@',
+  'CostBenefitCalculation' => 'Liiketoimintalaskelma',
   'CreateCompany' => '@@Luo yritys@@',
   'CreatingACompany' => '@@Luodaan yritystä...@@',
   'Description' => 'Kuvaus',
