@@ -8,7 +8,7 @@ $this->title = 'Futural startup';
 ?>
 <div class="site-index company-view">
 
-	<?php // echo "<h1>".Yii::t('Company', 'Your company has been created!')."</h1>"; ?>
+	<?php if(isset($_GET['created'])) echo "<h1>".Yii::t('Company', 'Your company has been created!')."</h1>"; ?>
 
 	<h2><?php echo $company->name; ?></h2>
 	<h3><?php echo $company->business_id; ?></h3>
