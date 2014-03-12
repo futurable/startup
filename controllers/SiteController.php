@@ -87,7 +87,7 @@ class SiteController extends Controller
 		}
 		# Company has been saved
 		if($action == 'save'){
-			$this->redirect( ['company/index','id'=>$models['company']->id], 'created'=>'true' );
+			$this->redirect( ['company/index','id'=>$models['company']->id, 'created'=>'true'] );
 		}
 		# Token key has not been sent
 		if($action == 'index'){
