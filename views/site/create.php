@@ -9,14 +9,14 @@ use app\models\CostbenefitItem;
 use app\commands\CBCTableRow;
 use yii\web\View;
 use yii\helpers\Json;
+use yii\web\JqueryAsset;
 $this->title = 'Futural startup - '.Yii::t('Company', 'Create a company');
 
 $industrySetupJSON = json_encode($industrySetupArray);
 $industrySetupJS = "var IndustrySetupArray = $industrySetupJSON;\n";
 
 $this->registerJs($industrySetupJS, View::POS_HEAD);
-// TODO: fix this
-//$this->registerJs('js/costBenefitCalculation.js');
+$this->registerJsFile('js/costBenefitCalculation.js', JqueryAsset::className());
 ?>
 <div class="site-index">
 
