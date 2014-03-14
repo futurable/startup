@@ -18,6 +18,7 @@
  */
 return array (
   'Create date' => '',
+  'Error while saving the company. Please report this incident to helpdesk@futurality.fi' => '',
   'Expiration date' => '',
   'Invalid token key.' => '',
   'Reclaim date' => '',
@@ -25,13 +26,6 @@ return array (
   'Token key' => '',
   'Token key is already used on {dateTime}.' => '',
   'Token setup' => '',
-  'CreateDate' => '@@Create date@@',
-  'ExpirationDate' => '@@Expiration date@@',
-  'ReclaimDate' => '@@Reclaim date@@',
-  'TokenCustomer' => '@@Token customer@@',
-  'TokenKey' => '@@Token key@@',
-  'TokenKey_\'{value}\'_AlreadyUsedOn_{formattedDate}' => '@@Token key \'{value}\' is already used on {formattedDate}@@',
-  'TokenSetup' => '@@Token setup@@',
   'ID' => 'ID',
   'Lifetime' => 'Lifetime',
 );
