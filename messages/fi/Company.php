@@ -9,7 +9,7 @@
  * Each array element represents the translation (value) of a message (key).
  * If the value is empty, the message is considered as not translated.
  * Messages that no longer need translation will have their translations
- * enclosed between a pair of '@@' marks.
+ * enclosed between a pair of '' marks.
  *
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
@@ -17,44 +17,28 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array (
-  'BankAccount' => '@@Pankkitunnukset@@',
+  'Please select another one' => 'Ole hyvä ja valitse toinen',
+  'The company email. You will receive the account information here.' => 'Yrityksen sähköpostiosoite. Tilin tiedot lähetetään tänne.',
+  'The company name. Be creative and stand out!' => 'Yrityksen nimi. Ole luova ja erotu joukosta!',
+  'This company name is already taken.' => 'Tämä yrityksen nimi on jo käytössä.',
   'Communication' => 'Yhteydet',
   'Company' => 'Yritys',
-  'CostBenefitCalculation' => 'Liiketoimintalaskelma',
-  'CreateCompany' => '@@Luo yritys@@',
-  'CreatingACompany' => '@@Luodaan yritystä...@@',
   'Description' => 'Kuvaus',
-  'EachTokenKeyCanBeUsedOnlyOnce' => '@@Jokaisen  perustamisavaimen voi käyttää vain kerran@@',
-  'EmailIsInvalid' => '@@Sähköpostiosoite on virheellinen@@',
-  'ErrorWhileDecidingFormStep' => '@@Virheellinen lomakkeen vaihe@@',
   'Expenses' => 'Materiaalikulut',
-  'FuturalityAccount' => '@@Futurality-tilisi@@',
-  'FuturalityLearningEnvironment' => '@@Futurality-oppimisympäristöön@@',
-  'GrabACupOfCoffee' => '@@Tässä on hyvä väli hakea kuppi kahvia.@@',
-  'HaveFun' => '@@Pidä hauskaa!@@',
+  'HaveFun' => 'Pidä hauskaa!',
   'Health' => 'Terveys',
   'Loans' => 'Lainat',
-  'LoginFrom' => '@@Kirjautuminen@@',
-  'OpenERPAccount' => '@@OpenERP-tunnukset@@',
+  'LoginFrom' => 'Kirjautuminen',
   'Other' => 'Muut',
   'OtherExpenses' => 'Muut kulut',
-  'Password' => '@@Salasana@@',
-  'PleaseBePatient' => '@@Ole hyvä ja odota kärsivällisesti!@@',
-  'PleaseGiveATokenKey' => '@@Ole hyvä, ja anna perustamisavain@@',
+  'Password' => 'Salasana',
   'Rents' => 'Vuokrat',
   'Salaries' => 'Palkat',
   'SideExpenses' => 'Sivukulut',
-  'The bank' => 'Pankki',
-  'The ERP system' => 'ERP-järjestelmä',
-  'The learning environment' => 'Oppimisympäristö',
   'Turnover' => 'Liikevaihto',
-  'UserId' => '@@Käyttäjätunnus@@',
+  'UserId' => 'Käyttäjätunnus',
   'Verify' => 'Tarkista',
-  'WelcomeToFuturality' => '@@Tervetuloa Futuralityyn!@@',
-  'YouHaveCreatedACompanyInThe' => '@@Olet luonut yrityksen@@',
-  'YourBusinessIdIs' => '@@Y-tunnuksesi on@@',
-  'YourCompanyNameIs' => '@@Yrityksesi nimi on@@',
-  'YourCompanyTagIs' => '@@Yrityksesi tunnus on@@',
+  'What should you do next?' => 'Mitä kannattaa tehdä seuraaksi?',
   'computer-assembly' => 'Tietokoneiden kokoonpano',
   'computer-retail' => 'Tietokoneiden jälleenmyynti',
   'Active' => 'Aktiivinen',
@@ -71,13 +55,15 @@ return array (
   'Monthly' => 'Kuukaudessa',
   'Name' => 'Nimi',
   'Please provide a token key' => 'Ole hyvä ja anna perustamisavain',
-  'Profit' => '@@Tuotto@@',
+  'Profit' => 'Tuotto',
   'Select industry' => 'Valitse toimiala',
   'Tag' => 'Tunnus',
+  'The ERP system' => 'ERP-järjestelmä',
+  'The bank' => 'Pankki',
+  'The learning environment' => 'Oppimisympäristö',
   'Token key' => 'Perustamisavain',
   'Validate' => 'Tarkista',
   'Welcome' => 'Tervetuloa',
   'Yearly' => 'Vuodessa',
-  'What should you do next?' => 'Mitä kannattaa tehdä seuraaksi?',
-  'Your company has been created!' => 'Yrityksesi on luotu!'
+  'Your company has been created!' => 'Yrityksesi on luotu!',
 );
