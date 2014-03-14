@@ -35,7 +35,7 @@ $this->title = 'Futural startup';
 	    </tr>
 	</table>
 
-	<h3><?php echo Yii::t('Company', 'CostBenefitCalculation'); ?></h3>
+	<h3><?php echo Yii::t('Company', 'Cost-benefit calculation'); ?></h3>
 	<table>
 		<tr>
 			<th></th>
