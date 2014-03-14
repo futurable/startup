@@ -49,6 +49,7 @@ class Company extends ActiveRecord
 			[['name', 'tag', 'business_id', 'email', 'employees', 'token_key_id', 'industry_id'], 'required'],
 			[['email'], 'email'],
 			[['name'], 'validateTag'],
+			[['name'], 'string', 'min'=>3],
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
@@ -73,7 +74,7 @@ class Company extends ActiveRecord
 		
 		if($record){	 
 			$this->addError($attribute, 
-					Yii::t('Company', 'This company name is already taken.'). " " . Yii::t('Company', 'Please select another one'));
+					Yii::t('Company', 'This company name is already taken.'). " " . Yii::t('Company', 'Please select another one').".");
 			$return = false;
 		} else {
 			$return = true;
