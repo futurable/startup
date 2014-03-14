@@ -2,6 +2,7 @@
 
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
+$db_bank = require(__DIR__ . '/db_bank.php');
 
 $config = [
 	'id' => 'basic',
@@ -45,6 +46,7 @@ $config = [
 			],
 		],
 		'db' => $db,
+		'db_bank' => $db_bank,
 	],
 	'params' => $params,
 	'modules' => [
