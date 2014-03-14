@@ -57,9 +57,9 @@ return array (
   'You can upload at most {limit, number} {limit, plural, one{file} other{files}}.' => '',
   'the input value' => '',
   '{attribute} "{value}" has already been taken.' => '',
-  '{attribute} is invalid.' => '',
+  '{attribute} is invalid.' => '{attribute} on virheellinen.',
   '{attribute} is not a valid URL.' => '',
-  '{attribute} is not a valid email address.' => '',
+  '{attribute} is not a valid email address.' => '{attribute} ei ole sähköpostiosoite.',
   '{attribute} must be "{requiredValue}".' => '',
   '{attribute} must be a number.' => '',
   '{attribute} must be a string.' => '',
@@ -93,5 +93,5 @@ return array (
   'Your request is invalid.' => '@@@@',
   '{attribute} "{value}" is invalid.' => '@@@@',
   'Please fix the following errors:' => 'Ole hyvä ja korjaa seuraavat virheet:',
-  '{attribute} cannot be blank.' => '{attribute} ei voi olla tyhjä',
+	'{attribute} cannot be blank.' => '{attribute} ei voi olla tyhjä',
 );
