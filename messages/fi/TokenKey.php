@@ -17,14 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Invalid token key.' => 'Virheellinen perustamisavain',
-  'Token key is already used on {dateTime}.' => 'Perustamisavain on käytetty {dateTime}',
+  'Error while saving the company. Please report this incident to helpdesk@futurality.fi' => 'Virhe tallentaessa yritystä. Ole hyvä ja ilmoita asiasta osoitteeseen helpdesk@futurality.fi',
   'Create date' => 'Luontipäivä',
   'Expiration date' => 'Erääntymispäivä',
   'ID' => 'ID',
+  'Invalid token key.' => 'Virheellinen perustamisavain',
   'Lifetime' => 'Kesto',
   'Reclaim date' => 'Käyttöönottopäivä',
   'Token customer' => 'Avaimen asiakas',
   'Token key' => 'Perustamisavain',
+  'Token key is already used on {dateTime}.' => 'Perustamisavain on käytetty {dateTime}',
   'Token setup' => 'Avaimen asetukset',
 );
