@@ -48,6 +48,7 @@ class Company extends ActiveRecord
 		return [
 			[['name', 'tag', 'business_id', 'email', 'employees', 'token_key_id', 'industry_id'], 'required'],
 			[['email'], 'email'],
+			[['name'], 'unique'],
 			[['name'], 'validateTag'],
 			[['name'], 'string', 'min'=>3],
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
@@ -90,7 +91,7 @@ class Company extends ActiveRecord
 	{
 		return [
 			'id' => Yii::t('Company', 'ID'),
-			'name' => Yii::t('Company', 'Name'),
+			'name' => Yii::t('Company', 'Company name'),
 			'tag' => Yii::t('Company', 'Tag'),
 			'business_id' => Yii::t('Company', 'Business ID'),
 			'email' => Yii::t('Company', 'Email'),
