@@ -20,7 +20,7 @@ AppAsset::register($this);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= Html::encode($this->title) ?></title>
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-	<link rel="shortcut icon" href="/startup/web/css/img/favicon.ico" />
+	<link rel="shortcut icon" href="<?= Yii::getAlias('@web') ?>/css/img/favicon.ico" />
 	<?php $this->head() ?>
 </head>
 <body>
