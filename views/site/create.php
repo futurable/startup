@@ -36,7 +36,7 @@ $this->registerJsFile('js/costBenefitCalculation.js', JqueryAsset::className());
 			<h2><?php echo Yii::t('Company', 'Info'); ?></h2>
 			<?php echo Html::activeHiddenInput($tokenKey, 'token_key'); ?>
 			
-			<label for='company-name'><?php echo Yii::t('Company', 'Name'); ?></label><br/>
+			<label for='company-name'><?php echo Yii::t('Company', 'Company name'); ?></label><br/>
 			<?php echo $form->field($company, 'name', ['options'=>['title'=>Yii::t('Company', 'The company name. Be creative and stand out!')]]); ?>
 			
 			<label for='company-email'><?php echo Yii::t('Company', 'Email'); ?></label><br/>

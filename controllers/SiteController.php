@@ -13,12 +13,12 @@ use app\models\Industry;
 use app\models\IndustrySetup;
 use app\models\TokenCustomer;
 use Symfony\Component\Console\Helper\Helper;
-use futural;
 use app\commands\CBCTableRow;
 use app\commands\TrimNonAlphaNumeric;
 use cebe\markdown\Markdown;
 use app\commands\CreateBusinessID;
 use app\commands\CreateCompanyTag;
+use yii\web\Session;
 
 class SiteController extends Controller
 {
@@ -30,6 +30,20 @@ class SiteController extends Controller
 		];
 	}
 
+    function init()
+    {
+    	parent::init();
+    	if (isset($_GET['lang']))
+    	{
+    		\Yii::$app->language = $_GET['lang'];
+    		\Yii::$app->session['lang'] = \Yii::$app->language;
+    	}
+    	else if ( isset(\Yii::$app->session['lang']) )
+    	{
+    		\Yii::$app->session['lang'] = \Yii::$app->language;
+    	}
+    }
+	
 	public function actions()
 	{
 		return [

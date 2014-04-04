@@ -1,9 +1,10 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use kartik\widgets\ActiveForm;
+use app\models\Lang;
+use yii\helpers\Url;
 
 /**
  * @var \yii\web\View $this
@@ -33,11 +34,12 @@ AppAsset::register($this);
 		        <a href='mailto:futurality@futurable.fi?subject=Feedback'>Give feedback</a>.
 		    </p>
 		</div>
-	
+            
 		<div class="container">
 			<div id="logo">
             	<?php echo Html::img('css/img/futural-logo-startup_h128.png'); ?>
 	        </div>
+	        
 			<?= $content ?>
 		</div>
 	</div>

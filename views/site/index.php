@@ -5,8 +5,33 @@
  */
 use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\helpers\Url;
+
 $this->title = 'Futural startup';
 ?>
+
+<?php 
+	NavBar::begin([
+		'brandLabel' => 'Futural startup',
+		'brandUrl' => Yii::$app->homeUrl,
+		'options' => [
+			'class' => 'navbar-inverse navbar-fixed-top',
+		],
+	]);
+	echo Nav::widget([
+		'options' => ['class' => 'navbar-nav navbar-right'],
+		'items' => [
+			['label' => 'Language', 'items' => [
+				['label' => 'Finnish', 'url' => Url::canonical().'?lang=fi'],
+				['label' => 'English', 'url' => Url::canonical().'?lang=en'],
+			]]
+		],
+	]);
+	NavBar::end();
+?>
+
 <div class="site-index">
 
 	<div class="jumbotron">
@@ -28,5 +53,5 @@ $this->title = 'Futural startup';
 			ActiveForm::end();
 		?>
 	</div>
-	
+
 </div>
