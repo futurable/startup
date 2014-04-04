@@ -52,6 +52,7 @@ return array (
   'Info' => 'Tiedot',
   'Monthly' => 'Kuukaudessa',
   'Name' => 'Nimi',
+  'Company name' => 'Yrityksen nimi',
   'Please provide a token key' => 'Ole hyvä ja anna perustamisavain',
   'Profit' => 'Tuotto',
   'Select industry' => 'Valitse toimiala',

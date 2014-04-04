@@ -56,7 +56,7 @@ return array (
   'You are not allowed to perform this action.' => '',
   'You can upload at most {limit, number} {limit, plural, one{file} other{files}}.' => '',
   'the input value' => '',
-  '{attribute} "{value}" has already been taken.' => '',
+  '{attribute} "{value}" has already been taken.' => '{attribute} "{value}" on jo käytössä.',
   '{attribute} is invalid.' => '{attribute} on virheellinen.',
   '{attribute} is not a valid URL.' => '',
   '{attribute} is not a valid email address.' => '{attribute} ei ole sähköpostiosoite.',
