@@ -148,6 +148,7 @@ class SiteController extends Controller
 		$tokenKey = new TokenKey();
 		$tokenKey->load($_POST);
 		$tokenKey->id = $this->getTokenKeyIdFromTokenKey($tokenKey);
+		$tokenKey = TokenKey::find($tokenKey->id);
 		
 		$company = new Company();
 		$company->load($_POST);
