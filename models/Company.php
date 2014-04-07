@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+
 use Yii;
 use Symfony\Component\Finder\Expression\Expression;
 use yii\behaviors\TimestampBehavior;
@@ -18,17 +19,22 @@ use app\commands\CreateCompanyTag;
  * @property integer $employees
  * @property integer $active
  * @property string $create_time
+ * @property string $bank_account_created
+ * @property string $openerp_database_created
  * @property integer $token_key_id
  * @property integer $industry_id
+ * @property integer $token_customer_id
  *
- * @property Industry $industry
  * @property TokenKey $tokenKey
+ * @property Industry $industry
+ * @property TokenCustomer $tokenCustomer
+ * @property CompanyPasswords[] $companyPasswords
  * @property CostbenefitCalculation[] $costbenefitCalculations
  * @property Order[] $orders
  * @property Remark $remark
  * @property Salary[] $salaries
  */
-class Company extends ActiveRecord
+class Company extends \yii\db\ActiveRecord
 {
 	public $profit;
 	
@@ -65,22 +71,22 @@ class Company extends ActiveRecord
 		$customer = $this->tokenKey->tokenCustomer;
 		$tagCreator = new CreateCompanyTag();
 		$tag = $tagCreator->run($this->name, $customer->tag);
-		
+	
 		// See if the tag is already used
 		$record = Company::find()
 		->select('tag')
 		->where('tag=:tag')
 		->addParams(['tag'=>$tag])
 		->one();
-		
-		if($record){	 
-			$this->addError($attribute, 
+	
+		if($record){
+			$this->addError($attribute,
 					Yii::t('Company', 'This company name is already taken.'). " " . Yii::t('Company', 'Please select another one').".");
 			$return = false;
 		} else {
 			$return = true;
 		}
-		
+	
 		return $record;
 	}
 	
@@ -105,15 +111,7 @@ class Company extends ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getIndustry()
-	{
-		return $this->hasOne(Industry::className(), ['id' => 'industry_id']);
-	}
-
-	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getTokenKey()
 	{
@@ -121,7 +119,31 @@ class Company extends ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getIndustry()
+	{
+		return $this->hasOne(Industry::className(), ['id' => 'industry_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getTokenCustomer()
+	{
+		return $this->hasOne(TokenCustomer::className(), ['id' => 'token_customer_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getCompanyPasswords()
+	{
+		return $this->hasMany(CompanyPasswords::className(), ['company_id' => 'id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getCostbenefitCalculations()
 	{
@@ -129,7 +151,7 @@ class Company extends ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getOrders()
 	{
@@ -137,7 +159,7 @@ class Company extends ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getRemark()
 	{
@@ -145,7 +167,7 @@ class Company extends ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getSalaries()
 	{

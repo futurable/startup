@@ -73,7 +73,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getCostbenefitCalculation()
 	{
@@ -81,7 +81,7 @@ class CostbenefitItem extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * @return \yii\db\ActiveRelation
+	 * @return \yii\db\ActiveQuery
 	 */
 	public function getCostbenefitItemType()
 	{

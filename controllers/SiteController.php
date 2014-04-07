@@ -152,6 +152,7 @@ class SiteController extends Controller
 		$company = new Company();
 		$company->load($_POST);
 		$company->token_key_id = $tokenKey->id;
+		$company->token_customer_id = $tokenKey->token_customer_id;
 		
 		$industry = new Industry();
 		$industry->load($_POST);

@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "remark".
  *
@@ -16,47 +18,47 @@ namespace app\models;
  */
 class Remark extends \yii\db\ActiveRecord
 {
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'remark';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'remark';
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules()
-	{
-		return [
-			[['event_date', 'create_date', 'company_id'], 'required'],
-			[['event_date', 'create_date'], 'safe'],
-			[['significance', 'company_id'], 'integer'],
-			[['description'], 'string', 'max' => 1024]
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['event_date', 'create_date', 'company_id'], 'required'],
+            [['event_date', 'create_date'], 'safe'],
+            [['significance', 'company_id'], 'integer'],
+            [['description'], 'string', 'max' => 1024]
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'id' => 'ID',
-			'description' => 'Description',
-			'event_date' => 'Event Date',
-			'create_date' => 'Create Date',
-			'significance' => 'Significance',
-			'company_id' => 'Company ID',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'description' => 'Description',
+            'event_date' => 'Event Date',
+            'create_date' => 'Create Date',
+            'significance' => 'Significance',
+            'company_id' => 'Company ID',
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getCompany()
-	{
-		return $this->hasOne(Company::className(), ['id' => 'company_id']);
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'company_id']);
+    }
 }

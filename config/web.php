@@ -46,6 +46,7 @@ $config = [
 			],
 		],
 		'db' => $db,
+		'db_bank' => $db_bank,
 	],
 	'params' => $params,
 	'modules' => [

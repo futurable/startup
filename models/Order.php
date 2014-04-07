@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "order".
  *
@@ -24,69 +26,69 @@ namespace app\models;
  */
 class Order extends \yii\db\ActiveRecord
 {
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'order';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'order';
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules()
-	{
-		return [
-			[['created', 'event_time', 'executed', 'sent'], 'safe'],
-			[['rows', 'active', 'openerp_purchase_order_id', 'company_id', 'order_setup_id', 'order_automation_id'], 'integer'],
-			[['value'], 'number'],
-			[['openerp_purchase_order_id', 'company_id', 'order_setup_id', 'order_automation_id'], 'required']
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['created', 'event_time', 'executed', 'sent'], 'safe'],
+            [['rows', 'active', 'openerp_purchase_order_id', 'company_id', 'order_setup_id', 'order_automation_id'], 'integer'],
+            [['value'], 'number'],
+            [['openerp_purchase_order_id', 'company_id', 'order_setup_id', 'order_automation_id'], 'required']
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'id' => 'ID',
-			'created' => 'Created',
-			'event_time' => 'Event Time',
-			'executed' => 'Executed',
-			'sent' => 'Sent',
-			'rows' => 'Rows',
-			'value' => 'Value',
-			'active' => 'Active',
-			'openerp_purchase_order_id' => 'Openerp Purchase Order ID',
-			'company_id' => 'Company ID',
-			'order_setup_id' => 'Order Setup ID',
-			'order_automation_id' => 'Order Automation ID',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'created' => 'Created',
+            'event_time' => 'Event Time',
+            'executed' => 'Executed',
+            'sent' => 'Sent',
+            'rows' => 'Rows',
+            'value' => 'Value',
+            'active' => 'Active',
+            'openerp_purchase_order_id' => 'Openerp Purchase Order ID',
+            'company_id' => 'Company ID',
+            'order_setup_id' => 'Order Setup ID',
+            'order_automation_id' => 'Order Automation ID',
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getCompany()
-	{
-		return $this->hasOne(Company::className(), ['id' => 'company_id']);
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'company_id']);
+    }
 
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getOrderAutomation()
-	{
-		return $this->hasOne(OrderAutomation::className(), ['id' => 'order_automation_id']);
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderAutomation()
+    {
+        return $this->hasOne(OrderAutomation::className(), ['id' => 'order_automation_id']);
+    }
 
-	/**
-	 * @return \yii\db\ActiveRelation
-	 */
-	public function getOrderSetup()
-	{
-		return $this->hasOne(OrderSetup::className(), ['id' => 'order_setup_id']);
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderSetup()
+    {
+        return $this->hasOne(OrderSetup::className(), ['id' => 'order_setup_id']);
+    }
 }
