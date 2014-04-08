@@ -19,6 +19,7 @@ use cebe\markdown\Markdown;
 use app\commands\CreateBusinessID;
 use app\commands\CreateCompanyTag;
 use yii\web\Session;
+use app\models\CompanyPasswords;
 
 class SiteController extends Controller
 {
@@ -225,7 +226,7 @@ class SiteController extends Controller
 		
 		$transaction = Yii::$app->db->beginTransaction();
 		
-			# Save the company
+			// Save the company
 			$company = $models['company'];
 			
 			// Get token key id
@@ -257,6 +258,11 @@ class SiteController extends Controller
 			// TODO: fix this
 			$company->create_time = date('Y-m-d H:i:s');
 			if(!$company->save()) $modelsSaved[] = 'company';
+			
+			// Create a company passwords row
+			$companyPasswords = new CompanyPasswords();
+			$companyPasswords->company_id = $company->id;
+			if(!$companyPasswords->save()) $modelsSaved[] = 'companyPasswords';
 			
 			// Create the cost-benefit calculation
 			$CostbenefitCalculation = $models['costBenefitCalculation'];

@@ -139,7 +139,7 @@ class Company extends \yii\db\ActiveRecord
 	 */
 	public function getCompanyPasswords()
 	{
-		return $this->hasMany(CompanyPasswords::className(), ['company_id' => 'id']);
+		return $this->hasOne(CompanyPasswords::className(), ['company_id' => 'id']);
 	}
 
 	/**

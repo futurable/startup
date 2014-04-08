@@ -31,7 +31,7 @@ class CompanyPasswords extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['bank_password', 'openerp_password', 'backend_password', 'company_id'], 'required'],
+            [['company_id'], 'required'],
             [['company_id'], 'integer'],
             [['bank_password', 'openerp_password', 'backend_password'], 'string', 'max' => 256]
         ];
