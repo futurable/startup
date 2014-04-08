@@ -70,8 +70,9 @@ $this->registerJsFile('js/costBenefitCalculation.js', JqueryAsset::className());
 				</tr>
 				<?php
 					echo "<h2>".Yii::t('Company', 'Cost-benefit calculation')."</h2><br/>";
+					$CBCTR = new CBCTableRow();
 					foreach($costBenefitItemTypes as $costBenefitItemType){
-						echo CBCTableRow::getRow($form, $costBenefitItemType); 
+						echo $CBCTR::getRow($form, $costBenefitItemType);
 					}
 				?>
 				<?php
