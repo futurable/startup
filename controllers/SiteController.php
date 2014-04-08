@@ -148,8 +148,10 @@ class SiteController extends Controller
 	private function getCreateCompanyModels(){
 		$tokenKey = new TokenKey();
 		$tokenKey->load($_POST);
-		$tokenKey->id = $this->getTokenKeyIdFromTokenKey($tokenKey);
-		$tokenKey = TokenKey::find($tokenKey->id);
+		$tokenKey = TokenKey::find()
+            ->where('token_key=:token_key')
+            ->addParams([':token_key' => $tokenKey->token_key])
+            ->one();
 		
 		$company = new Company();
 		$company->load($_POST);
