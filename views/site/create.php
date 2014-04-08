@@ -78,7 +78,7 @@ $this->registerJsFile('js/costBenefitCalculation.js', JqueryAsset::className());
 				<?php
 					$profit = new $costBenefitItemType();
 					$profit->name = 'profit';
-					echo CBCTableRow::getRow($form, $profit); 
+					echo $CBCTR->getRow($form, $profit); 
 				?>
 			</table>
 		</div>
