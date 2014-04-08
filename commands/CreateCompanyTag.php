@@ -7,7 +7,7 @@
  */
 namespace app\commands;
 
-class CreateCompanyTag extends TrimNonAlphaNumeric{
+class CreateCompanyTag{
 	public function run($company, $customer){
 		$Trimmer = new TrimNonAlphaNumeric();
 		

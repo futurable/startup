@@ -7,13 +7,13 @@
  */
 namespace app\commands;
 
-class TrimNonAlphaNumeric extends RemoveAccents{
+class TrimNonAlphaNumeric{
 	public function run($name){
 		// Name to lowercase
 		$tag = strtolower($name);
 	
 		// Replace accented letters
-		$removeAccents = new removeAccents();
+		$removeAccents = new RemoveAccents();
 		$tag = $removeAccents->run($tag);
 	
 		// Remove illegal characters
