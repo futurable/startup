@@ -1,4 +1,5 @@
-assets/
+
+!assets/AppAsset.php
 protected/runtime/
 themes/classic/views/
 .*
