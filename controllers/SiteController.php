@@ -19,6 +19,7 @@ use app\commands\CreateBusinessID;
 use app\commands\CreateCompanyTag;
 use yii\web\Session;
 use app\models\CompanyPasswords;
+use app\models\Contact;
 
 class SiteController extends Controller
 {
@@ -69,6 +70,14 @@ class SiteController extends Controller
             if ($this->validateTokenKey($tokenKey) === true) {
                 $models = $this->getCreateCompanyModels();
                 
+                if($models['contact']['attributes']['name'] AND !$models['company']['attributes']['name']){
+                    $contact = New Contact();
+                    $contact->attributes = $models['contact']['attributes'];
+                    $contact->save();
+                    
+                    $models['contact']->id = $contact->id;
+                }
+                
                 if ($models['company']['attributes']['name']) {
                     if ($this->saveModels($models) === true) {
                         $action = 'save';
@@ -77,7 +86,10 @@ class SiteController extends Controller
                         $action = 'create';
                     }
                 } else {
-                    $action = 'create';
+                    if($models['tokenKey']['token_customer_id'] == 1 AND !$models['contact']['attributes']['name']){
+                        $action = 'contact';
+                    }
+                    else $action = 'create';
                 }
             } elseif ($record == true) {
                 // Token key is already used
@@ -91,6 +103,9 @@ class SiteController extends Controller
         }
         
         // Token key is valid
+        if ($action == 'contact'){
+            return $this->render('contact', $models);
+        }
         if ($action == 'create') {
             return $this->render('create', $models);
         }
@@ -151,14 +166,12 @@ class SiteController extends Controller
 
     private function getReclaimedTokenKey($tokenKey)
     {
-        $record = TokenKey::find()->select([
-            'reclaim_date'
-        ])
+        $record = TokenKey::find()
             ->where('token_key=:token_key')
             ->addParams([
             ':token_key' => $tokenKey->token_key
         ])
-            ->one();
+        ->one();
         
         return $record;
     }
@@ -171,7 +184,10 @@ class SiteController extends Controller
             ->addParams([
             ':token_key' => $tokenKey->token_key
         ])
-            ->one();
+        ->one();
+
+        $contact = new Contact();
+        $contact->load($_POST);
         
         $company = new Company();
         $company->load($_POST);
@@ -190,6 +206,7 @@ class SiteController extends Controller
         
         $render = [
             'tokenKey' => $tokenKey,
+            'contact' => $contact,
             'company' => $company,
             'industry' => $industry,
             'industryArray' => $industryArray,
@@ -287,14 +304,19 @@ class SiteController extends Controller
         $company->create_time = date('Y-m-d H:i:s');
         if (! $company->save())
             $modelsSaved[] = 'company';
-            
-            // Create a company passwords row
+        
+        // Save the contact
+        $contact = Contact::findOne($_POST['Contact']['id']);
+        $contact->company_id = $company->id;
+        $contact->save();
+        
+        // Create a company passwords row
         $companyPasswords = new CompanyPasswords();
         $companyPasswords->company_id = $company->id;
         if (! $companyPasswords->save())
             $modelsSaved[] = 'companyPasswords';
             
-            // Create the cost-benefit calculation
+        // Create the cost-benefit calculation
         $CostbenefitCalculation = $models['costBenefitCalculation'];
         $CostbenefitCalculation->company_id = $company->id;
         if (! $CostbenefitCalculation->save())
