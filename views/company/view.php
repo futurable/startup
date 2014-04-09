@@ -8,7 +8,10 @@ $this->title = 'Futural startup';
 ?>
 <div class="site-index company-view">
 
-	<?php if(isset($_GET['created'])) echo "<h1>".Yii::t('Company', 'Your company has been created!')."</h1>"; ?>
+	<?php if(isset($_GET['created'])){
+	    echo "<h1>".Yii::t('Company', 'Your company has been created!')."</h1>";
+	    echo "<p>".Yii::t('Company', 'Account information will be sent to your email')."</p>";
+	}?>
 
 	<h2><?php echo $company->name; ?></h2>
 
@@ -64,7 +67,8 @@ $this->title = 'Futural startup';
 	<?php
 		echo "<h3>".Yii::t('Company', 'What should you do next?')."</h3>";
 		echo "<p>".Yii::t('Company', 'The learning environment').": <a href='https://futurality.fi'>futurality.fi</a></p>";
-		echo "<p>".Yii::t('Company', 'The ERP system').": <a href='http://erp.futurality.fi/?db=$company->tag'>erp.futurality.fi</a></p>";
+		//echo "<p>".Yii::t('Company', 'The ERP system').": <a href='http://erp.futurality.fi/web/login?db={$company->tag}'>erp.futurality.fi</a></p>";
 		echo "<p>".Yii::t('Company', 'The bank').": <a href='http://futurality.fi/bank/index.php/user/login/?company=$company->tag'>futurality.fi/bank</a></p>";
+		echo "<p>".Yii::t('Company', 'The backend').": <a href='http://futurality.fi/backend/?company=$company->tag'>futurality.fi/backend</a></p>";
 	?>
 </div>

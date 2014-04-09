@@ -148,8 +148,15 @@ a.desc:after {
 #company-info{
 	padding-right: 40px;
 }
+
+#contact-info input{
+    width: 40%;
+    margin-left: 30%;
+}
+
 .company-view{
 	padding: 40px;
+	margin: 0 auto;
 }
 .company-view td, .company-view th{
 	padding: 5px 10px;
