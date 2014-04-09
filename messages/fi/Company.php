@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return array (
+   'Account information will be sent to your email' => 'Tilitiedot lähetetään sähköpostiisi',
   'Please select another one' => 'Ole hyvä ja valitse toinen',
   'The company email. You will receive the account information here.' => 'Yrityksen sähköpostiosoite. Tilin tiedot lähetetään tänne.',
   'The company name. Be creative and stand out!' => 'Yrityksen nimi. Ole luova ja erotu joukosta!',
