@@ -186,8 +186,12 @@ class SiteController extends Controller
         ])
         ->one();
 
-        $contact = new Contact();
-        $contact->load($_POST);
+        if(isset($_POST['Contact']['id'])){
+            $contact = Contact::find($_POST['Contact']['id'])->one();
+        }
+        else {
+            $contact = new Contact;
+        }
         
         $company = new Company();
         $company->load($_POST);
@@ -306,9 +310,13 @@ class SiteController extends Controller
             $modelsSaved[] = 'company';
         
         // Save the contact
-        $contact = Contact::findOne($_POST['Contact']['id']);
-        $contact->company_id = $company->id;
-        $contact->save();
+        if(isset($_POST['Contact']['id'])){
+            $contact = Contact::findOne($_POST['Contact']['id']);
+            if(!empty($contact)){
+                $contact->company_id = $company->id;
+                $contact->save();
+            }
+        }
         
         // Create a company passwords row
         $companyPasswords = new CompanyPasswords();
