@@ -70,8 +70,8 @@ class SiteController extends Controller
             if ($this->validateTokenKey($tokenKey) === true) {
                 $models = $this->getCreateCompanyModels();
                 
-                if($models['contact']['attributes']['name'] AND !$models['company']['attributes']['name']){
-                    $contact = New Contact();
+                if ($models['contact']['attributes']['name'] and ! $models['company']['attributes']['name']) {
+                    $contact = new Contact();
                     $contact->attributes = $models['contact']['attributes'];
                     $contact->save();
                     
@@ -86,10 +86,10 @@ class SiteController extends Controller
                         $action = 'create';
                     }
                 } else {
-                    if($models['tokenKey']['token_customer_id'] == 1 AND !$models['contact']['attributes']['name']){
+                    if ($models['tokenKey']['token_customer_id'] == 1 and ! $models['contact']['attributes']['name']) {
                         $action = 'contact';
-                    }
-                    else $action = 'create';
+                    } else
+                        $action = 'create';
                 }
             } elseif ($record == true) {
                 // Token key is already used
@@ -103,7 +103,7 @@ class SiteController extends Controller
         }
         
         // Token key is valid
-        if ($action == 'contact'){
+        if ($action == 'contact') {
             return $this->render('contact', $models);
         }
         if ($action == 'create') {
@@ -166,12 +166,11 @@ class SiteController extends Controller
 
     private function getReclaimedTokenKey($tokenKey)
     {
-        $record = TokenKey::find()
-            ->where('token_key=:token_key')
+        $record = TokenKey::find()->where('token_key=:token_key')
             ->addParams([
             ':token_key' => $tokenKey->token_key
         ])
-        ->one();
+            ->one();
         
         return $record;
     }
@@ -184,10 +183,13 @@ class SiteController extends Controller
             ->addParams([
             ':token_key' => $tokenKey->token_key
         ])
-        ->one();
-
-        $contact = new Contact();
-        $contact->load($_POST);
+            ->one();
+        
+        if (isset($_POST['Contact']['id'])) {
+            $contact = Contact::find($_POST['Contact']['id'])->one();
+        } else {
+            $contact = new Contact();
+        }
         
         $company = new Company();
         $company->load($_POST);
@@ -304,11 +306,15 @@ class SiteController extends Controller
         $company->create_time = date('Y-m-d H:i:s');
         if (! $company->save())
             $modelsSaved[] = 'company';
-        
-        // Save the contact
-        $contact = Contact::findOne($_POST['Contact']['id']);
-        $contact->company_id = $company->id;
-        $contact->save();
+            
+            // Save the contact
+        if (isset($_POST['Contact']['id'])) {
+            $contact = Contact::findOne($_POST['Contact']['id']);
+            if (! empty($contact)) {
+                $contact->company_id = $company->id;
+                $contact->save();
+            }
+        }
         
         // Create a company passwords row
         $companyPasswords = new CompanyPasswords();
@@ -316,7 +322,7 @@ class SiteController extends Controller
         if (! $companyPasswords->save())
             $modelsSaved[] = 'companyPasswords';
             
-        // Create the cost-benefit calculation
+            // Create the cost-benefit calculation
         $CostbenefitCalculation = $models['costBenefitCalculation'];
         $CostbenefitCalculation->company_id = $company->id;
         if (! $CostbenefitCalculation->save())
