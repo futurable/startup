@@ -72,6 +72,14 @@ h2{
 	padding: 14px 24px;
 }
 
+.btn-primary{
+    background: #A8CF38;
+    border: none;
+}
+.btn-primary:hover{
+    background: #C8DA30;
+}
+
 .not-set {
 	color: #c55;
 	font-style: italic;

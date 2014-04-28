@@ -3,11 +3,11 @@
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
  */
-use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Futural startup';
 ?>
@@ -42,14 +42,12 @@ $this->title = 'Futural startup';
 		<?php
 			$form = ActiveForm::begin([
 				'id' => 'tokenkey-form'
-				, 'type' => ActiveForm::TYPE_INLINE
-				, 'formConfig' => ['showLabels'=>false]
 			]);
 
 			echo $form->errorSummary($tokenKey);
 
 			echo "<p>".$form->field($tokenKey, 'token_key')."</p>";
-			echo Html::submitButton(Yii::t('Company', 'Validate'), ['class' => 'btn btn-success']);
+			echo Html::submitButton(Yii::t('Company', 'Validate'), ['class' => 'btn btn-primary']);
 			ActiveForm::end();
 		?>
 	</div>
