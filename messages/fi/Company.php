@@ -37,7 +37,7 @@ return array (
   'Turnover' => 'Liikevaihto',
   'UserId' => 'Käyttäjätunnus',
   'Verify' => 'Tarkista',
-  'What should you do next?' => 'Mitä kannattaa tehdä seuraaksi?',
+  'What should you do next?' => 'Mitä kannattaa tehdä seuraavaksi?',
   'computer-assembly' => 'Tietokoneiden kokoonpano',
   'computer-retail' => 'Tietokoneiden jälleenmyynti',
   'Active' => 'Aktiivinen',
