@@ -60,7 +60,7 @@ class Company extends \yii\db\ActiveRecord
 			[['employees', 'active', 'token_key_id', 'industry_id'], 'integer'],
 			[['create_time'], 'safe'],
 			[['name', 'email'], 'string', 'max' => 256],
-			[['tag'], 'string', 'max' => 32],
+			[['tag'], 'string', 'max' => 64],
 			[['business_id'], 'string', 'max' => 9],
 		];
 	}
