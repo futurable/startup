@@ -61,21 +61,22 @@ class SiteController extends Controller
         $tokenKey = new TokenKey();
         $tokenKey->load($_POST);
         $action = 'index';
-        
+
         // Token key has been sent
         if ($tokenKey->token_key) {
             $record = $this->getReclaimedTokenKey($tokenKey);
-            
+
             // Check if the token key is valid
             if ($this->validateTokenKey($tokenKey) === true) {
-                $models = $this->getCreateCompanyModels();
+                $models = $this->createCompanyModels();
                 
-                if ($models['contact']['attributes']['name'] and ! $models['company']['attributes']['name']) {
+                //if ($models['contact']['attributes']['name'] and ! $models['company']['attributes']['name']) {
+                if ( isset( Yii::$app->request->post()['Contact'] ) && !isset( Yii::$app->request->post()['Contact']['id']) ) {
                     $contact = new Contact();
-                    $contact->attributes = $models['contact']['attributes'];
+                    $contact->load(Yii::$app->request->post());
                     $contact->save();
                     
-                    $models['contact']->id = $contact->id;
+                    $models['contact'] = $contact;
                 }
                 
                 if ($models['company']['attributes']['name']) {
@@ -101,7 +102,7 @@ class SiteController extends Controller
                 $tokenKey->addError('token_key', Yii::t('TokenKey', 'Invalid token key.'));
             }
         }
-        
+
         // Token key is valid
         if ($action == 'contact') {
             return $this->render('contact', $models);
@@ -175,20 +176,18 @@ class SiteController extends Controller
         return $record;
     }
 
-    private function getCreateCompanyModels()
+    private function createCompanyModels()
     {
         $tokenKey = new TokenKey();
         $tokenKey->load($_POST);
         $tokenKey = TokenKey::find()->where('token_key=:token_key')
             ->addParams([
             ':token_key' => $tokenKey->token_key
-        ])
+            ])
             ->one();
-        
-        if (isset($_POST['Contact']['id'])) {
-            $contact = Contact::find($_POST['Contact']['id'])->one();
-        } else {
-            $contact = new Contact();
+        $contact = new Contact();
+        if (isset( Yii::$app->request->post()['Contact']['id'] )) {
+            $contact = Contact::find()->select('id,name,email,organization,position,create_time')->where( ['id' => Yii::$app->request->post()['Contact']['id']] )->one();
         }
         
         $company = new Company();
@@ -306,10 +305,10 @@ class SiteController extends Controller
         $company->create_time = date('Y-m-d H:i:s');
         if (! $company->save())
             $modelsSaved[] = 'company';
-            
-            // Save the contact
-        if (isset($_POST['Contact']['id'])) {
-            $contact = Contact::findOne($_POST['Contact']['id']);
+
+        // Save the contact
+        if (isset( Yii::$app->request->post()['Contact']['id'] )) {
+            $contact = Contact::findOne( Yii::$app->request->post()['Contact']['id'] );
             if (! empty($contact)) {
                 $contact->company_id = $company->id;
                 $contact->save();
