@@ -13,7 +13,8 @@ use Yii;
  * @property integer $create_demo_data
  * @property integer $create_purchasing_orders
  * @property integer $token_customer_id
- * @property integer $industries
+ * @property string $industries
+ * @property string $employees
  *
  * @property TokenKey[] $tokenKeys
  * @property TokenCustomer $tokenCustomer
@@ -34,9 +35,10 @@ class TokenSetup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'token_customer_id', 'industries'], 'required'],
-            [['create_init_data', 'create_demo_data', 'create_purchasing_orders', 'token_customer_id', 'industries'], 'integer'],
-            [['description'], 'string', 'max' => 32]
+            [['description', 'token_customer_id'], 'required'],
+            [['create_init_data', 'create_demo_data', 'create_purchasing_orders', 'token_customer_id'], 'integer'],
+            [['description'], 'string', 'max' => 32],
+            [['industries', 'employees'], 'string', 'max' => 1024],
         ];
     }
 
@@ -46,13 +48,14 @@ class TokenSetup extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'description' => 'Description',
-            'create_init_data' => 'Create Init Data',
-            'create_demo_data' => 'Create Demo Data',
-            'create_purchasing_orders' => 'Create Purchasing Orders',
-            'token_customer_id' => 'Token Customer ID',
-            'industries' => 'Industries',
+            'id' => Yii::t('app', 'ID'),
+                'description' => Yii::t('app', 'Description'),
+                'create_init_data' => Yii::t('app', 'Create Init Data'),
+                'create_demo_data' => Yii::t('app', 'Create Demo Data'),
+                'create_purchasing_orders' => Yii::t('app', 'Create Purchasing Orders'),
+                'token_customer_id' => Yii::t('app', 'Token Customer ID'),
+                'industries' => Yii::t('app', 'Industries'),
+                'employees' => Yii::t('app', 'Employees'),
         ];
     }
 

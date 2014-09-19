@@ -203,7 +203,7 @@ class SiteController extends Controller
         
         $industryArray = $this->getIndustryArray();
         $industrySetupArray = $this->getIndustrySetupArray();
-        $employeeArray = $this->getEmployeeArray();
+        $employeeArray = $this->getEmployeeArray($tokenKey);
         
         $render = [
             'tokenKey' => $tokenKey,
@@ -232,17 +232,30 @@ class SiteController extends Controller
         return $industryDropdown;
     }
 
-    private function getEmployeeArray()
+    private function getEmployeeArray($tokenKey)
     {
-        // TODO: Tie these to the industry
-        $keys = range(10, 100, 10);
-        $values = range(10, 100, 10);
-        foreach ($values as $key => $value) {
-            $values[$key] = $value . "+";
-        }
-        $array2 = array_combine($keys, $values);
+        $employees = $tokenKey->tokenSetup->employees;
         
-        $employeeDropdown = array_combine(range(1, 9), range(1, 9)) + $array2;
+        // No spesific settings is set
+        if($employees == 0){
+            $keys = range(10, 100, 10);
+            $values = range(10, 100, 10);
+            
+            foreach ($values as $key => $value) {
+                $values[$key] = $value . "+";
+            }
+            $combined = array_combine($keys, $values);
+            
+            $employeeDropdown = array_combine(range(1, 9), range(1, 9)) + $combined;
+        }
+        // The key has spesific settings
+        else{
+            $employeesArray = explode(',', $employees);
+            $keys = $employeesArray;
+            $values = $employeesArray;
+            
+            $employeeDropdown = array_combine($keys, $values);
+        }
         
         return $employeeDropdown;
     }
