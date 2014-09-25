@@ -44,8 +44,6 @@ $this->title = 'Futural startup';
 				'id' => 'tokenkey-form'
 			]);
 
-			echo $form->errorSummary($tokenKey);
-
 			echo "<p>".$form->field($tokenKey, 'token_key')."</p>";
 			echo Html::submitButton(Yii::t('Company', 'Validate'), ['class' => 'btn btn-primary']);
 			ActiveForm::end();
