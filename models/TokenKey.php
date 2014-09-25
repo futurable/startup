@@ -1,7 +1,10 @@
 <?php
-
 namespace app\models;
+
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "token_key".
@@ -21,66 +24,123 @@ use Yii;
  */
 class TokenKey extends \yii\db\ActiveRecord
 {
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'token_key';
-	}
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules()
-	{
-		return [
-			[['token_key', 'lifetime', 'token_customer_id', 'token_setup_id'], 'required'],
-			[['lifetime', 'token_customer_id', 'token_setup_id'], 'integer'],
-			[['create_date', 'reclaim_date', 'expiration_date'], 'safe'],
-			[['token_key'], 'string', 'max' => 16],
-			[['token_key'], 'unique']
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'token_key';
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'id' => Yii::t('TokenKey', 'ID'),
-			'token_key' => Yii::t('TokenKey', 'Token key'),
-			'lifetime' => Yii::t('TokenKey', 'Lifetime'),
-			'create_date' => Yii::t('TokenKey', 'Create date'),
-			'reclaim_date' => Yii::t('TokenKey', 'Reclaim date'),
-			'expiration_date' => Yii::t('TokenKey', 'Expiration date'),
-			'token_customer_id' => Yii::t('TokenKey', 'Token customer'),
-			'token_setup_id' => Yii::t('TokenKey', 'Token setup'),
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [
+                [
+                    'token_key',
+                    'lifetime',
+                    'token_customer_id',
+                    'token_setup_id'
+                ],
+                'required'
+            ],
+            [
+                [
+                    'lifetime',
+                    'token_customer_id',
+                    'token_setup_id'
+                ],
+                'integer'
+            ],
+            [
+                [
+                    'create_date',
+                    'reclaim_date',
+                    'expiration_date'
+                ],
+                'safe'
+            ],
+            [
+                [
+                    'token_key'
+                ],
+                'string',
+                'max' => 16
+            ],
+            [
+                [
+                    'token_key'
+                ],
+                'unique'
+            ]
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getCompanies()
-	{
-		return $this->hasMany(Company::className(), ['token_key_id' => 'id']);
-	}
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+                'attributes' => [
+                        ActiveRecord::EVENT_BEFORE_INSERT => ['create_date'],
+                        ActiveRecord::EVENT_BEFORE_UPDATE => ['reclaim_date'],
+                ],
+            ]
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getTokenCustomer()
-	{
-		return $this->hasOne(TokenCustomer::className(), ['id' => 'token_customer_id']);
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('TokenKey', 'ID'),
+            'token_key' => Yii::t('TokenKey', 'Token key'),
+            'lifetime' => Yii::t('TokenKey', 'Lifetime'),
+            'create_date' => Yii::t('TokenKey', 'Create date'),
+            'reclaim_date' => Yii::t('TokenKey', 'Reclaim date'),
+            'expiration_date' => Yii::t('TokenKey', 'Expiration date'),
+            'token_customer_id' => Yii::t('TokenKey', 'Token customer'),
+            'token_setup_id' => Yii::t('TokenKey', 'Token setup')
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getTokenSetup()
-	{
-		return $this->hasOne(TokenSetup::className(), ['id' => 'token_setup_id']);
-	}
+    /**
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompanies()
+    {
+        return $this->hasMany(Company::className(), [
+            'token_key_id' => 'id'
+        ]);
+    }
+
+    /**
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTokenCustomer()
+    {
+        return $this->hasOne(TokenCustomer::className(), [
+            'id' => 'token_customer_id'
+        ]);
+    }
+
+    /**
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTokenSetup()
+    {
+        return $this->hasOne(TokenSetup::className(), [
+            'id' => 'token_setup_id'
+        ]);
+    }
 }

@@ -289,12 +289,11 @@ class SiteController extends Controller
         // Get token key id
         $tokenKey = $models['tokenKey'];
         
-        $tokenKey = TokenKey::find()->select('id, token_customer_id')
+        $tokenKey = TokenKey::find()
             ->where('token_key=:token_key')
             ->addParams([
             ':token_key' => $tokenKey->token_key
-        ])
-            ->one();
+        ])->one();
         
         $company->token_key_id = $tokenKey->id;
         
@@ -303,9 +302,12 @@ class SiteController extends Controller
             ->where('id=:token_customer_id')
             ->addParams([
             ':token_customer_id' => $tokenKey->token_customer_id
-        ])
-            ->one();
+        ])->one();
         
+        // Mark token key as used
+        if (! $tokenKey->save())
+            $modelsSaved[] = 'tokenKey';
+
         // Create a safe company tag
         $TagCreator = new CreateCompanyTag();
         $company->tag = $TagCreator->run($company->name, $tokenCustomer->tag);
@@ -367,6 +369,7 @@ class SiteController extends Controller
             $success = true;
         } else {
             $transaction->rollBack();
+            $success = false;
         }
         
         return $success;

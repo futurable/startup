@@ -2,8 +2,8 @@
 
 return [
 	'class' => 'yii\db\Connection',
-	'dsn' => 'mysql:host=futurality.fi;dbname=futural2_core',
+	'dsn' => 'mysql:host=127.0.0.1;dbname=futural2_core',
 	'username' => 'futural_core',
-	'password' => 'futural',
+	'password' => 'futural_core',
 	'charset' => 'utf8',
 ];
