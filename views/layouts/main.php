@@ -37,7 +37,7 @@ AppAsset::register($this);
             
 		<div class="container">
 			<div id="logo">
-            	<?php echo Html::img('css/img/futural-logo-startup_h128.png'); ?>
+            	<?php echo Html::img(Yii::getAlias('@web').'/css/img/futural-logo-startup_h128.png'); ?>
 	        </div>
 	        
 			<?= $content ?>
