@@ -201,7 +201,7 @@ class SiteController extends Controller
         $costBenefitCalculation = new CostbenefitCalculation();
         $costBenefitItemTypes = CostbenefitItemType::find()->orderBy('order')->all();
         
-        $industryArray = $this->getIndustryArray();
+        $industryArray = $this->getIndustryArray($tokenKey);
         $industrySetupArray = $this->getIndustrySetupArray();
         $employeeArray = $this->getEmployeeArray($tokenKey);
         
@@ -220,10 +220,16 @@ class SiteController extends Controller
         return $render;
     }
 
-    private function getIndustryArray()
+    private function getIndustryArray($tokenKey)
     {
-        // TODO: Tie this to the token key
-        $record = Industry::find()->all();
+        $industries = $tokenKey->tokenSetup->industries;
+        
+        if($industries != 0){
+            $industryArray = explode(',', $industries);
+            $record = Industry::find()->where(['in', 'id', $industryArray])->all();
+        }
+        // @TODO: get excluded industries from somewhere
+        else $record = Industry::find()->where(['not', ['id' => '100']])->all();
         
         foreach ($record as $row) {
             $industryDropdown[$row->id] = Yii::t('Industry', $row->name);
