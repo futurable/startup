@@ -15,7 +15,10 @@ class CreateCompanyTag{
 		$customer = $Trimmer->run($customer);
 		
 		$tag = "{$customer}_{$company}";
-	
+		
+		// Allow 32 characters or less
+		$tag = substr($tag, 0, 32);
+		
 		return $tag;
 	}
 }
