@@ -19,9 +19,6 @@ class TrimNonAlphaNumeric{
 		// Remove illegal characters
 		$tag = preg_replace("/[^A-Za-z0-9]/", '', $tag);
 	
-		// Allow 16 characters or less
-		$tag = substr($tag, 0, 16);
-	
 		return $tag;
 	}
 }
